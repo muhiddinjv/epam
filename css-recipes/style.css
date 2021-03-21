@@ -1,0 +1,67 @@
+/* General --------------------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+    /* 62.5 = 10px or 1rem */
+}
+
+body{font-size: 1.6rem;}
+
+img{width: 20rem;}
+
+.name, .contact, aside, .projects{
+  border: 1px solid grey;
+}
+
+
+/* Header --------------------- */
+header{
+  border: 1px solid blue;
+  height: max-content;
+}
+
+.name{
+  width: 70%;
+  /* height: 25.1rem; */
+  float: left;
+}
+
+.contact{
+  width: 30%;
+  height: 25.1rem;
+  float: right;
+}
+
+
+/* Main ----------------------- */
+main{
+  border: 1px solid red;
+  /* height: 99.5rem; */
+  height: fit-content;
+}
+aside{
+  float: left;
+  width: 32%;
+}
+
+.projects{
+  width: 68%;
+  float: right;
+}
+
+
+/* Footer ----------------------- */
+footer{
+  clear: both;
+  border: 1px solid green;
+  height: 7.2rem;
+}
