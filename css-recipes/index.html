@@ -5,62 +5,74 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link rel="stylesheet" href="style/css/all.css">
+  <link rel="stylesheet" href="style/style.css">
   <title>CV Portfolio</title>
 </head>
 
 <body>
-  <header class="fit-content">
+  <!-- HEADER ------------------------------------------>
+  <header class="clearfix">
     <div class="name">
       <div class="my-photo">
         <img src="img/me.jpg" alt="">
       </div>
       <div class="title">
         <h1>Muhiddin JV</h1>
-        <h3>Web Developer</h3>
+        <h3>Front-End Developer</h3>
       </div>
     </div>
     <div class="contact">
       <div>
-        <div class="icon">icon</div>
-        <p>adress</p>
+        <i class="fas fa-map-marker-alt"></i>
+        <p>Massiv Keles, Tashkent</p>
       </div>
       <div>
-        <div class="icon">icon</div>
-        <p>adress</p>
+        <i class="fas fa-globe"></i>
+        <p>emuallim.github.io</p>
+        <p>muhiddinjv@gmail.com</p>
       </div>
       <div>
-        <div class="icon">icon</div>
-        <p>adress</p>
+        <i class="fas fa-phone-alt"></i>
+        <p>+998(93)539-9093</p>
       </div>
     </div>
   </header>
 
-  <main class="fit-content">
+  <!-- MAIN --------------------------------------------->
+  <main class="clearfix">
     <aside class="personal">
       <div class="profile">
+        <i class="fas fa-male"></i>
         <h2>profile</h2>
         <p>Dolor sit a quam erat volutpat. Ut wisi enim ad minim veniam, quis nostruduk cipit lobortis nislea quis
           commodo consequat. Quis nostruduk cipit lobortis nislea</p>
       </div>
       <div class="Skills">
+        <i class="fas fa-cogs"></i>
         <h2>Skills</h2>
         <p>text</p>
       </div>
       <div class="Reference">
+        <i class="fas fa-comments"></i>
         <h2>Reference</h2>
         <p>text</p>
       </div>
       <div class="Awards">
+        <i class="fas fa-award"></i>
         <h2>Awards</h2>
         <h4>first</h4>
         <h4>second</h4>
         <h4>third</h4>
       </div>
     </aside>
+
+    <!-- PROJECTS ---------------------------------------------->
     <section class="projects">
+      <i class="fas fa-briefcase"></i>
       <h1>projects</h1>
-      <!-- (figure.project-$>div>img^figurecaption>h2{project name}+p{project description})*6 -->
+      <!-- Emmet Magic: (figure.project-$>div>img^figurecaption>h2{project name}+p{project description})*6 -->
       <figure class="project-1">
         <div><img src="img/google.jpg" alt="google image"></div>
         <figurecaption>
@@ -105,7 +117,7 @@
       </figure>
     </section>
   </main>
-  <footer>Footer</footer>
+  <footer class="clearfix">Footer</footer>
 </body>
 
 </html>

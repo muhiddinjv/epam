@@ -10,17 +10,17 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* 62.5 = 10px or 1rem */
 }
 
 body{font-size: 1.6rem;}
 
-.fit-content::after{
-  height:fit-content;
+.clearfix::after{
   content: "";
   clear: both;
   display: table;
+  height:fit-content;
 }
 
 img{width: 20rem;}
@@ -32,29 +32,27 @@ img{width: 20rem;}
 
 /* Header --------------------- */
 header{
-  /* height: 36vh; */
-  /* border: 5px solid blue; */
+  background: #4c5eab;
+  color: white;
 }
 
 .name{
   width: 70%;
-  /* height: 25.1rem; */
   float: left;
   padding: 6rem 0 4rem 8rem;
-  text-align: center;
 }
 
 .my-photo>img{
   width: 15rem;
+  margin-right: 3rem;
   border-radius: 50%;
   float: left;
 }
 
 .title{
+  border: 1px solid grey;
+  margin-top:4.5rem;
   float: left;
-}
-.title>h1,h3{
-  vertical-align:middle;
 }
 
 .contact{
@@ -82,7 +80,6 @@ aside{
 
 /* Footer ----------------------- */
 footer{
-  clear: both;
   border: 1px solid green;
   height: 7.2rem;
 }
