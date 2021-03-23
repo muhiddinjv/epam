@@ -10,36 +10,45 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     /* 62.5 = 10px or 1rem */
-}
+  }
+  
+  body{
+    font-size: 1.6rem;
+  }
 
-body{font-size: 1.6rem;}
-
-.clearfix::after{
+  .clearfix{
   content: "";
   clear: both;
-  display: table;
+  /* display: table; */
   height:fit-content;
 }
 
 img{width: 20rem;}
 
-.name, .contact, aside, .projects{
-  border: 1px solid grey;
+aside, .projects{
+  border: 1px solid black;
+}
+
+.container{
+  margin: 0 auto;
+  min-width: 72rem;
 }
 
 
-/* Header --------------------- */
+/* Header ---------------------*/
 header{
   background: #4c5eab;
   color: white;
+  min-height: 25rem !important;
 }
 
 .name{
   width: 70%;
   float: left;
   padding: 6rem 0 4rem 8rem;
+  /* background: #4c5eab; */
 }
 
 .my-photo>img{
@@ -58,6 +67,41 @@ header{
 .contact{
   width: 30%;
   float: right;
+  /* background: #4c5eab; */
+}
+
+.contact_list{
+  max-width: 22rem;
+  margin-top: 6rem;
+  list-style: none;
+  clear: both;
+}
+
+.links{
+  float: left;
+  /* border: 1px solid yellow; */
+  margin-left: 3rem;
+  margin-top: -2.5rem;
+}
+
+.links>a{
+  color: white;
+  text-decoration: none;
+}
+
+.contact_list>li{
+  float: left ;
+  border: 1px solid white;
+  margin-bottom: 2rem;
+}
+
+.contact_list>li>i{
+  margin-top: .8rem;
+  width: 3rem;
+}
+
+.contact_list>li>*{
+  float:left;
 }
 
 
@@ -70,6 +114,11 @@ main{
 aside{
   float: left;
   width: 32%;
+}
+
+.skills{
+  color: white;
+  background:grey;
 }
 
 .projects{
