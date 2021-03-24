@@ -16,6 +16,7 @@ html {
   
   body{
     font-size: 1.6rem;
+    color: #2e2e2e;
   }
 
   .clearfix{
@@ -106,14 +107,15 @@ header{
 
 /* Main ----------------------- */
 main{
-  /* border: 5px solid red; */
-  /* height: 99.5rem; */
-  color: #2e2e2e;
+  overflow: hidden;
+  position: relative;
 }
 
 aside{
   float: left;
   width: 26rem;
+  position: absolute;
+  height: 1000rem;
   margin-left: 8rem;
   padding-top: 4rem;
 }
