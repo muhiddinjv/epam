@@ -41,7 +41,7 @@ aside, .projects{
 header{
   background: #4c5eab;
   color: white;
-  min-height: 25rem !important;
+  min-height: 25rem;
 }
 
 .name{
@@ -59,7 +59,6 @@ header{
 }
 
 .title{
-  border: 1px solid grey;
   margin-top:4.5rem;
   float: left;
 }
@@ -109,11 +108,39 @@ header{
 main{
   /* border: 5px solid red; */
   /* height: 99.5rem; */
+  color: #2e2e2e;
 }
 
 aside{
   float: left;
-  width: 32%;
+  width: 26rem;
+  margin-left: 8rem;
+  padding-top: 4rem;
+}
+
+aside>*{
+  border: 1px solid red;
+  margin-bottom: 4rem;
+}
+
+.circled{
+  color: white;
+  width: 4rem;
+  height: 4rem;
+  padding-top: 1.2rem;
+  margin: 0 2rem 1.5rem 0;
+  border-radius: 50%;
+  background:#4c5eab;
+  text-align: center;
+}
+
+.centered{
+  border: 1px solid grey;
+  margin-top: .4rem;
+}
+
+.float_left>*{
+  float: left;
 }
 
 .skills{
@@ -124,6 +151,7 @@ aside{
 .projects{
   width: 68%;
   float: right;
+  padding-top: 4rem;
 }
 
 
