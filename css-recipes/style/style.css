@@ -23,7 +23,7 @@ body{
   content: "";
   clear: both;
   /* display: table; */
-  height:fit-content;
+  /* height:fit-content; */
 }
 
 .float_left,.float_left>*{
@@ -126,17 +126,14 @@ header{
 
 
 /* Main ----------------------- */
-.container3{
+.container2{
   width: 100%;
-  /* background:cadetblue; */
   position: relative;
   overflow: hidden;
 }
 
-.container2{
+.container1{
   width: 100%;
-  /* background:brown; */
-  /* background:#fafafa; */
   background: linear-gradient(to right, white, #f8f8f8);
   border-right: 2px solid rgb(240, 239, 239);
   position: relative;
@@ -150,7 +147,8 @@ aside{
   margin-left: 10%;
   padding-top: 4rem;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* pain in the a55 */
   left: 68%;
 }
 
@@ -173,6 +171,64 @@ aside>*{
   margin-bottom: 1rem;
 }
 
+/* Reference ---------------- */
+.reference_list{
+  padding-left: 3rem;
+}
+.reference{
+  padding-top: 4rem;
+}
+
+.reference li{
+  list-style-type: none;
+  /* border: 1px solid red; */
+    /* You need to turn on relative 
+    positioning so the line is placed 
+    relative to the item rather than 
+    absolutely on the page */
+  position: relative;
+    /* Use padding to space things 
+    out rather than margins as the 
+    line would get broken up otherwise */
+  margin: 0;
+  /* padding-bottom: 1em; */
+  /* padding-left: 1px; */
+}
+
+.list_item-1:before {
+  background-color: #999695;
+  width: 1px;
+  content: '';
+  position: absolute;
+  top: -72px;
+  bottom: 28px;
+  left: -18px;
+}
+
+.bullet { 
+  float: left; 
+  fill: #999695; 
+  width: 26px; 
+  margin-left: -26px; 
+  padding-right: 8px; 
+  top: 5rem;
+}
+
+/* .reference li::before{
+  content: '\2022';
+  color: red;
+  font-weight: bold;
+  width: 2.3rem;
+  display: inline-block;
+  font-size: 2rem;
+  border: 2px solid red;
+  border-radius: 50%;
+  margin-left: -3rem;
+} */
+
+.reference_list a{
+  text-decoration: none;
+}
 
 
 
@@ -195,5 +251,4 @@ aside>*{
 /* Footer ----------------------- */
 footer{
   border: 1px solid green;
-  height: 7.2rem;
 }
