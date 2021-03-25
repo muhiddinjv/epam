@@ -35,6 +35,17 @@ body{
   margin-top: .4rem;
 }
 
+.circled{
+  color: white;
+  width: 4rem;
+  height: 4rem;
+  padding-top: 1.2rem;
+  margin: 0 2rem 1.5rem 0;
+  border-radius: 50%;
+  background:#4c5eab;
+  text-align: center;
+}
+
 img{width: 20rem;}
 
 .projects{
@@ -148,23 +159,22 @@ aside>*{
   margin-bottom: 4rem;
 }
 
-.circled{
-  color: white;
-  width: 4rem;
-  height: 4rem;
-  padding-top: 1.2rem;
-  margin: 0 2rem 1.5rem 0;
-  border-radius: 50%;
-  background:#4c5eab;
+.interests_content>*{
+  /* border: 1px solid blue; */
+  margin-right: 2.5rem;
   text-align: center;
 }
 
-
-
-.skills{
-  color: white;
-  background:grey;
+.interests_content i{
+  color:#4c5eab;
+  border: 5px solid #4c5eab;
+  border-radius: 50%;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
+
+
+
 
 
 /* Portfolio ----------------------- */
