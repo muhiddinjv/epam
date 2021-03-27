@@ -11,7 +11,7 @@ html {
     box-sizing: border-box;
     font-size: 62.5%;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    /* 62.5 = 10px or 1rem */
+    /* 62.5% = 10px or 1rem */
 }
   
 body{
@@ -31,7 +31,7 @@ body{
 }
 
 .centered{
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   margin-top: .4rem;
 }
 
@@ -44,12 +44,6 @@ body{
   border-radius: 50%;
   background:#4c5eab;
   text-align: center;
-}
-
-img{width: 20rem;}
-
-.projects{
-  border: 1px solid grey;
 }
 
 .container{
@@ -87,7 +81,6 @@ header{
 .contact{
   width: 30%;
   float: right;
-  /* background: #4c5eab; */
 }
 
 .contact_list{
@@ -99,19 +92,21 @@ header{
 
 .links{
   float: left;
-  /* border: 1px solid yellow; */
   margin-left: 3rem;
   margin-top: -2.5rem;
 }
 
-.links>a{
+.links a{
   color: white;
   text-decoration: none;
 }
 
+.links a:hover{
+  color:orange;
+}
+
 .contact_list>li{
   float: left ;
-  border: 1px solid white;
   margin-bottom: 2rem;
 }
 
@@ -147,8 +142,7 @@ aside{
   margin-left: 10%;
   padding-top: 4rem;
   position: relative;
-  /* overflow: hidden; */
-  /* pain in the a55 */
+  overflow: hidden;
   left: 68%;
 }
 
@@ -158,6 +152,7 @@ aside>*{
 }
 
 .interests_content>*{
+  margin-top: .5rem;
   /* border: 1px solid blue; */
   margin-right: 2.5rem;
   text-align: center;
@@ -230,7 +225,18 @@ aside>*{
   text-decoration: none;
 }
 
+.awards_content>*{
+  margin-bottom: 1rem;
+}
 
+.awards a{
+  text-decoration: none;
+  color: #2e2e2e;
+}
+
+.awards a:hover{
+ color: #4c5eab;
+}
 
 
 /* Portfolio ----------------------- */
@@ -245,10 +251,35 @@ aside>*{
 
 .projects{
   margin-left: 6rem;
+  text-align: center;
 }
 
+.project{
+  width: 24rem;
+  height: 26rem;
+  margin: 0 1.5rem 1.5rem 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.project a{
+  text-decoration: none;
+  color: #2e2e2e;
+}
+
+.project a:hover{
+  color: #4c5eab;
+}
+
+.project img{
+  width: 23.8rem;
+  height: 17rem;
+}
 
 /* Footer ----------------------- */
 footer{
-  border: 1px solid green;
+  color: white;
+  background:#4c5eab;
+  padding-top: 2.5rem;
+  padding-left: 8%;
+  height: 7rem;
 }
