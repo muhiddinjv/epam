@@ -1,0 +1,50 @@
+@import "nav.css";
+
+.fab{
+  color: black;
+  background-color: silver;
+  font-size:99px;
+}
+
+html{
+  font-family: "Lato regular", sans-serif;
+  color: #4c4c4c;
+}
+.about_wrapper{
+  background: url("../img/pattern-square.png");
+  background-color: silver;
+}
+.reservations_wrapper{
+  background: url("../img/pattern-drop.png");
+  background-color: silver;
+}
+
+.divider-white{
+  background:blueviolet;
+}
+
+
+.pattern2 {
+      background-image: url("pattern.png");
+      opacity: 0.02;
+      position: absolute;
+      left: 0px;
+      top: 750px;
+      width: 1600px;
+      height: 710px;
+      z-index: 240;
+}
+
+.bg{
+  background-color: silver;
+  background-image: url("../img/bg.png");
+  width: 500px;
+  height: 500px;
+}
+
+.pattern{
+  background-color: silver;
+  background-image: url("../img/pattern.png");
+  width: 500px;
+  height: 500px;
+}

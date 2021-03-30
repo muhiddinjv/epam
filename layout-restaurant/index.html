@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/css/all.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/main.css">
   <title>Restaurant</title>
 </head>
 
@@ -16,28 +16,28 @@
 
     <!-- HEADER --------------------->
     <header>
-      <!-- Navigation Menu ---------------------------->
+      <!-- Navigation ----------------->
       <section class="nav_wrapper">
-        <div class="nav_logo">Logo</div>
+        <div class="nav_logo">LAMBADA</div>
         <nav class="nav_menu">
-          <a href="#">menu-item1</a>
-          <a href="#">menu-item2</a>
-          <a href="#">menu-item3</a>
-          <a href="#">menu-item4</a>
-          <a href="#">menu-item5</a>
-          <a href="#">menu-item6</a>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#ingredients">Ingredients</a>
+          <a href="#menu">Menu</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#reservations">Reservations</a>
         </nav>
         <nav class="nav_social-icons">
-          <a href="https://twitter.com/"><i class="fas fa-twitter fa-2x" aria-hidden="true"></i></a>
-          <a href="https://youtube.com/"><i class="fas fa-youtube fa-2x" aria-hidden="true"></i></a>
-          <a href="https://facebook.com/"><i class="fas fa-facebook fa-2x" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          <a href="https://youtube.com/"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+          <a href="https://facebook.com/"><i class="fab fa-facebook" aria-hidden="true"></i></a>
         </nav>
       </section>
 
-      <!-- Promotion ----------------------------------->
+      <!-- Promotion ----------------------->
       <section class="promo_wrapper">
         <h1>the right ingredients for the right food</h1>
-        <img src="img/divider.png" class="divider" />
+        <img src="img/divider-main.png" class="divider" style="background:silver;" />
         <div class="promo_buttons">
           <button class="promo_btn-black">BOOK A TABLE</button>
           <button class="promo_btn-white">SEE THE MENU</button>
@@ -45,14 +45,13 @@
       </section>
     </header>
 
-    <!-- MAIN ----------------------->
+    <!-- MAIN ------------------------------>
     <main>
-
       <!-- About --------------------------->
       <section class="about_wrapper">
         <article>
           <h2>Just the right food</h2>
-          <img src="img/divider.png" alt="divider">
+          <img src="img/divider-gold.png" alt="divider-gold">
           <p>
             If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
             for more. Perfect materials and freshly baked food, delicious Lambda cakes, muffins, and gourmet coffees
@@ -71,7 +70,7 @@
       <section class="ingredients_wrapper">
         <article>
           <h2 class="ingredients_heading">Fine Ingredients</h2>
-          <img src="img/divider.png" alt="divider">
+          <img src="img/divider-gold.png" alt="divider-gold">
           <p class="ingredients_text">
             If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
             for more. Perfect materials and freshly baked food, delicious Lambda cakes, muffins, and gourmet coffees
@@ -93,10 +92,10 @@
 
       <!-- Menu ----------------------------->
       <section class="menu_wrapper">
-        <!-- Emmet Magic:(article.menu_group>h2.menu_heading{menu heading}+img[src="img/divider.png"][alt="divider"].divider+(.menu_item>.food{foodname}+.price{foodprice}+p.description{food description})*3)*4 -->
+        <!-- Emmet Magic:(article.menu_group>h2.menu_heading{menu heading}+img[src="img/divider-gold.png"][alt="divider-gold"].divider-gold+(.menu_item>.food{foodname}+.price{foodprice}+p.description{food description})*3)*4 -->
         <article class="menu_group">
           <h2 class="menu_heading">Appetiser</h2>
-          <img src="img/divider.png" alt="divider" class="divider">
+          <img src="img/divider-gold.png" alt="divider-gold" class="divider-gold">
           <div class="menu_item">
             <h3 class="food">Tzatsiki</h3>
             <div class="price">$3.99</div>
@@ -116,7 +115,7 @@
 
         <article class="menu_group">
           <h2 class="menu_heading">Salads</h2>
-          <img src="img/divider.png" alt="divider" class="divider">
+          <img src="img/divider-gold.png" alt="divider-gold" class="divider-gold">
           <div class="menu_item">
             <h3 class="food">Olive Special</h3>
             <div class="price">$5.99</div>
@@ -137,7 +136,7 @@
 
         <article class="menu_group">
           <h2 class="menu_heading">Starters</h2>
-          <img src="img/divider.png" alt="divider" class="divider">
+          <img src="img/divider-gold.png" alt="divider-gold" class="divider-gold">
           <div class="menu_item">
             <h3 class="food">Haloumi</h3>
             <div class="price">$3.99</div>
@@ -152,7 +151,7 @@
 
         <article class="menu_group">
           <h2 class="menu_heading">Main Dishes</h2>
-          <img src="img/divider.png" alt="divider" class="divider">
+          <img src="img/divider-gold.png" alt="divider-gold" class="divider-gold">
           <div class="menu_item">
             <h3 class="food">Cornish Mackerel</h3>
             <div class="price">$5.99</div>
@@ -176,7 +175,7 @@
       <section class="reviews_wrapper">
         <article>
           <h2 class="reviews_heading">Guest Reviews</h2>
-          <img src="img/divider.png" class="divider" />
+          <img src="img/divider-gold.png" class="divider-gold" />
           <div class="reviews_content">
             <img src="img/quote.png" class="quote_sign" />
             <blockquote class="reviews_text">If you’ve been to one of our restaurants, you’ve seen – and tasted – what
@@ -196,7 +195,7 @@
         </div>
         <form action="submit">
           <h2>Just the right food</h2>
-          <img src="img/divider.png" alt="divider" class="divider">
+          <img src="img/divider-gold.png" alt="divider-gold" class="divider-gold">
           <p class="reservations_text">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps
             our customers coming back for more. Perfect materials and freshly baked food.</p>
           <p class="reservations_text">
@@ -217,7 +216,7 @@
       </section>
     </main>
 
-    <!-- FOOTER ------------------------------------>
+    <!-- FOOTER ---------------------------->
     <footer class="footer_wrapper" style="display: flex;">
       <article class="about">
         <h3 class="about_heading">About Us</h3>
@@ -243,9 +242,9 @@
         </p>
         <div class="social_icons">
           <nav class="nav_social-icons">
-            <a href="https://twitter.com/"><i class="fas fa-twitter fa-2x" aria-hidden="true"></i></a>
-            <a href="https://youtube.com/"><i class="fas fa-youtube fa-2x" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/"><i class="fas fa-facebook fa-2x" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://youtube.com/"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/"><i class="fab fa-facebook" aria-hidden="true"></i></a>
           </nav>
         </div>
       </article>
