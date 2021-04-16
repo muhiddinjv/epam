@@ -1,0 +1,51 @@
+.reservations{
+  background-image: url("../img/pattern-drop.png");
+  /* height: 71rem; */
+  padding: 10rem 0;
+  position: relative;
+}
+
+.reserv-background{
+  position: absolute;
+  background: linear-gradient(-20deg, 
+  rgba(211, 211, 211, 0.2), white);
+  height: 100%;
+  width: 160rem;
+  z-index: -9;
+}
+
+form{width: 43rem; height: 51rem;}
+
+.images_left{
+  width: 57rem;
+  margin-right: 10rem;
+}
+
+.input_fields{
+  margin: 4rem 0 .7rem 0;
+  text-align: start;
+  color: var(--darkYellow);
+}
+
+.input_field{
+  margin: 1rem 0 2.5rem 0;
+  padding-left: 1rem;
+  width: 20rem;
+  height: 3.5rem;
+  border: 1px solid lightgrey;
+  outline: none;
+}
+
+.input_field:focus{
+  border: 2px solid var(--lightYellow);
+}
+
+.date, .dropdown{color: gray;}
+
+.form_btn{
+  color: white;
+  padding: 1rem 6rem;
+  background: var(--lightYellow);
+  border: none;
+  cursor: pointer;
+}

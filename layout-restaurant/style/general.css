@@ -1,0 +1,58 @@
+/* General -------------------- */
+:root {
+  --darkYellow: #cc9900;
+  --lightYellow: #dab33e;
+  --darkGray: #4c4c4c;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+box-sizing: border-box;
+font-size: 62.5%; 
+/* 62.5% = 10px or 1rem */
+}
+
+body{
+  /* line-height: 1.5; */
+  font-size: 1.6rem;
+  color: var(--darkGray);
+}
+
+main{min-height: calc(100vh - 14rem)}
+
+
+.wrapper{
+  position: relative;
+  margin: 0 auto;
+  width: 160rem;
+}
+
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-center{text-align: center}
+
+.divider_margin-small{
+  padding: 1.5rem 0 1rem 0;
+}
+
+.divider_margin-big{
+  padding: 1.5rem 0 3rem 0;
+}
+
+/* .hide{display: none;} */

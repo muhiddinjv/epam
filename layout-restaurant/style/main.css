@@ -1,0 +1,88 @@
+@import "general.css";
+@import "header.css";
+@import "promo.css";
+@import "about.css";
+@import "ingredients.css";
+@import "menu.css";
+@import "reviews.css";
+@import "reservations.css";
+@import "footer.css";
+
+/* FONTS --------------------- */
+@font-face {
+  font-family: GentiumBookBasic;
+  src: url(../fonts/GentiumBookBasic/GentiumBookBasic-Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: GentiumBookBasic;
+  src: url(../fonts/GentiumBookBasic/GentiumBookBasic-Bold.ttf);
+  font-weight: bold;
+}
+/* --------------------------- */
+@font-face {
+  font-family: YesevaOne;
+  src: url(../fonts/YesevaOne/YesevaOne-Regular.ttf);
+  font-weight: normal;
+}
+
+/* --------------------------- */
+@font-face {
+  font-family: Lato;
+  src: url(../fonts/Lato/Lato-Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Lato;
+  src: url(../fonts/Lato-SemiBold.ttf);
+  font-weight: 600;
+}
+
+/* --------------------------- */
+@font-face {
+  font-family: OpenSans;
+  src: url(../fonts/OpenSans/OpenSans-Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url(../fonts/OpenSans/OpenSans-Bold.ttf);
+  font-weight: bold;
+}
+
+html{
+  font-family:"Lato", sans-serif;
+  font-weight: normal;
+}
+
+h1,h2,h3{
+  font-family: "YesevaOne",sans-serif;
+  font-weight: normal;
+}
+
+h2,h3{color:var(--darkYellow)}
+
+h2 {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+h3{font-size: 2.1rem}
+
+.bold-text{
+  font-family: "OpenSans",sans-serif;
+  font-weight: bold;
+}
+
+.nav_menu,blockquote{
+  font-family: "GentiumBookBasic", sans-serif;
+  font-weight: bold;
+}
+
+.footer_text{
+  font-family: "OpenSans", sans-serif;
+  font-weight: normal;
+}

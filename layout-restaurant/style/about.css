@@ -1,0 +1,25 @@
+.about{
+  background-image: url("../img/pattern-drop.png");
+  padding: 6rem 0;
+  position: relative;
+}
+
+.about-background{
+  position: absolute;
+  background: linear-gradient(to left, 
+  rgba(211, 211, 211, 0.3), white);
+  height:100%;
+  width: 160rem;
+  z-index: -9;
+}
+
+.about_article {width: 43rem;}
+
+.about_text{color: var(--darkGray)}
+
+.cook{padding-top: 5rem;}
+
+.dish{
+  width: 61rem;
+  padding-left: 4rem;
+}
