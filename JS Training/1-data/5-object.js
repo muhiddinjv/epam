@@ -28,7 +28,14 @@ When you have finished the work, click "Run Tests" to see if your code is workin
 
 In the end, click "Submit" to submit your code pass this kata.
 */
+let obj = {
+  name: prompt('animal name'),
+  color: prompt('animal color'),
+  legs: prompt('animal legs')
+};
 
 const animal = obj => {
   return `This ${obj.color} ${obj.name} has ${obj.legs} legs.`;
 }
+
+document.write(animal(obj))
