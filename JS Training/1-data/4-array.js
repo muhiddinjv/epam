@@ -34,6 +34,7 @@ const getFirst = (arr) => arr[0];//return the first element of arr
 const getLast = (arr) => arr[arr.length - 1];//return the last element of arr
 const pushElement = (arr) => { arr.push(1); return arr };//push el to arr
 const popElement = (arr) => { arr.pop(); return arr }//pop an element from arr
+
 //CODEWARS SOLUTION
 // const getLength = array => array.length;
 // const getFirst = array => array[0];

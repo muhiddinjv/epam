@@ -45,3 +45,5 @@ function helloWorld() {
   let str = "Hello World!"
   document.write(str)
 }
+
+helloWorld();
