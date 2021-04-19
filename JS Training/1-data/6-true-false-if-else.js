@@ -16,8 +16,8 @@ else            return "arr is empty";
 You can see, arr is defined as an array, arr.length should be a number value, but in this example, the number value should convert to bool value. it means, if arr.length value is 0, convert value to false, if arr.length value is not 0, convert value to true.
 
 These values are converted to false in the conditional statement:
-
 0, -0, "", null, undefined, NaN
+
 #Task
 Coding in function ```trueOrFalse```, function accept 1  parameters:```val```, try to use the conditional statement if...else, if ```val``` value is false (val==false or it can convert to false), should return a string "false", if not, return a string "true".
 
@@ -25,7 +25,16 @@ When you have finished the work, click "Run Tests" to see if your code is workin
 
 In the end, click "Submit" to submit your code pass this kata.
 */
-
-function trueOrFalse(val) {
-  return Boolean(val).toString();
+let val = [];
+const trueOrFalse = (val) => {
+  if (val) return 'true';
+  else return 'false';
+  // a short version of if-else
+  // return !val ? 'false':'true'
 }
+document.write(trueOrFalse(val));
+
+// Codewars solution
+// function trueOrFalse(val) {
+//   return Boolean(val).toString();
+// }
