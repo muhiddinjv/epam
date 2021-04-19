@@ -6,7 +6,7 @@ Conditional statement--switch
 In javascript, switch is another condition statement.
 
 switch(n){
-  case 1:  
+  case 1:
     //code block
     break;
   case 2:
@@ -28,7 +28,7 @@ For example, we can write a function to calculate what day is today, like this:
 
 function whatDayIsToday(n){
   //getDay() is a methods of Date(), we will learn them later.
-  var day=new Date().getDay(),x; 
+  var day=new Date().getDay(),x;
   switch (day){
     case 0:
       x="Today it's Sunday";
@@ -70,23 +70,89 @@ little tips: Use default for most of the cases can reduce your work.
 When you have finished the work, click "Run Tests" to see if your code is working properly.
 
 In the end, click "Submit" to submit your code pass this kata.
-*/
 
 function howManydays(month){
-  switch (month){
-  case 1:return 31;
-  case 2:return 28;
-  case 3:return 31;
-  case 4:return 30;
-  case 5:return 31;
-  case 6:return 30;
-  case 7:return 31;
-  case 8:return 31;
-  case 9:return 30;
-  case 10:return 31;
-  case 11:return 30;
-  case 12:return 31;
-  
+  var days;
+  switch (days){
+   //code here
   }
-  return month;
+  return days;
 }
+*/
+//The getMonth() method returns the month as a number between 1 and 12
+let month = new Date().getMonth();
+function howManydays(month) {
+  var days;
+  switch (month) {
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      days = 30;
+      break;
+    case 2:
+      days = 28;
+      break;
+    default:
+      days = 31;
+  }
+  return days;
+}
+document.write(howManydays(month));
+
+// Codewars BEST solution
+// function howManydays(month){
+//   switch (month){
+//      case 2: return 28
+//      case 4:
+//      case 6:
+//      case 9:
+//      case 11: return 30
+//   }
+//   return 31
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function howManydays(month){
+//   switch (month){
+//   case 1:return 31;
+//   case 2:return 28;
+//   case 3:return 31;
+//   case 4:return 30;
+//   case 5:return 31;
+//   case 6:return 30;
+//   case 7:return 31;
+//   case 8:return 31;
+//   case 9:return 30;
+//   case 10:return 31;
+//   case 11:return 30;
+//   case 12:return 31;
+
+//   }
+//   return month;
+// }
