@@ -54,37 +54,18 @@ When you have finished the work, click "Run Tests" to see if your code is workin
 In the end, click "Submit" to submit your code pass this kata.
 */
 
-function saleHotdogs(n) {
-  return ?
+let n = 14;
+
+const saleHotdogs = (n) => {
+  // return age<16 ? "children" : age<50 ? "young man" : "old man";
+  return n < 5 ? 100 * n :
+    n >= 5 && n < 10 ? 95 * n :
+      n >= 10 ? 90 * n : true;
 }
 
+document.write(saleHotdogs(n));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function saleHotdogs(n){
-//   return n<5?100*n:n>=5 && n<10?95*n:n>=10?90*n:true;
-// }
+// codwars solution > DRY code
+function saleHotdogs(n) {
+  return n * (n < 5 ? 100 : n < 10 ? 95 : 90);
+}
