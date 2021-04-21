@@ -16,11 +16,12 @@ function sum1_100(){
   +51+52+53+54+55+56+57+58+59+60+61+62+63+64+65+66+67+68+69+70+71+72+73+74+75
   +76+77+78+79+80+81+82+83+84+85+86+87+88+89+90+91+92+93+94+95+96+97+98+99+100;
 }
+
 Do you feel a bit tired? We can use a loop statement do it:
 
 function sum1_100(){
   var sum=0,num=1;    //Initialize two variables sum and num
-  while (num<=100){   //Determine the expression in brackets, while true, 
+  while (num<=100){   //Determine the expression in brackets, while true,
                       //run the code block one time, while false, break the loop
     sum=sum+num;      //Each time num will be added to the current value of sum
                       //It can be simplified as:  sum+=num
@@ -29,6 +30,7 @@ function sum1_100(){
   }
   return sum;         //return the final cumulative value
 }
+
 The do..while is a variant of while. The example above can be written like this:
 
 function sum1_100(){
@@ -57,19 +59,39 @@ You need to write a loop statement within the function that loops n times. Each 
 Finally, return the padded string.
 */
 
-const padIt = (str, n) => {
-  let result = str
-  let i = 0
+// MY SOLUTION
+// const padIt = (str, n) => {
+//   var num = 0;
+//   do {
+//     str = "*" + str + "*";
+//     num++;
+//   } while (num <= n)
+//   return str;
+// }
 
+const padIt = (str, n) => {
+  let i = 0
   while (i < n) {
     if (i % 2 === 0) {
-      result = `*${result}`
+      str = `*${str}`
     } else {
-      result = `${result}*`
+      str = `${str}*`
     }
-
-    i += 1
+    i++
   }
-
-  return result
+  return str
 }
+document.write(padIt("hello", 12));
+
+// Codewars BEST solution
+// function padIt(str,n){
+//   while(n>0){
+//     if(n%2 === 0) {
+//       str = str + "*";
+//     }else{
+//       str = "*" + str;
+//     }
+//     n --;
+//   }
+//   return str;
+// }
