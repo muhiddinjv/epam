@@ -69,33 +69,9 @@ const grabDoll = (dolls) => {
 }
 
 document.write(grabDoll(dolls))
-// let arr = [-1, -2, 1, 2, 3, 4, 5, 7, 8, 9, 0]
-// function dontDisplayNegative(arr) {
-//   for (var i = 0; i < arr.length; i++) {
-//     if (arr[i] < 0) continue;
-//     console.log(arr[i])
-//   }
-// }
-// document.write(dontDisplayNegative(arr));
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Codewars BEST solution
 // function grabDoll(dolls){
 //   var bag=[];
 //   for (let i = 0; i < dolls.length; i++) {

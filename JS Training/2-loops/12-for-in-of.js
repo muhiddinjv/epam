@@ -80,12 +80,27 @@ Return the ```five``` after works finished.
 You should use ```for..in``` in your code, otherwise, your solution may not pass this kata. Don't learn bad habits from those lazy guys ;-)
 */
 
-function giveMeFive(obj){
-   var arr=[];
-  for (var key in obj){
-  if (key.length==5) arr.push(key);
-  if (obj[key].length==5) arr.push(obj[key]);
+var obj = { Our: "earth", is: "a", beautyful: "world" };
+
+const giveMeFive = (obj) => {
+  var arr = [];
+  for (var key in obj) {
+    if (key.length == 5) { arr.push(key) };
+    if (obj[key].length == 5) { arr.push(obj[key]) };
+    // console.log(key);
+    // console.log(key + " " + obj[key]);
   }
   return arr;
-  
 }
+
+document.write(giveMeFive(obj))
+
+// Codewars BEST solution
+// function giveMeFive(obj){
+//   var five=[];
+//   for (var key in obj) {
+//     if (key.length==5) five.push(key);
+//     if (obj[key].length==5) five.push(obj[key]);
+//   }
+//   return five;
+// }
