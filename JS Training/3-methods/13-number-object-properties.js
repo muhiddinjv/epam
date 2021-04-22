@@ -52,11 +52,50 @@ whatNumberIsIt(100) should return "Input number is 100"
 What you need to think about is how to judge it correctly and effectively and don't forget isNaN().
 */
 
-function whatNumberIsIt(n){
-  if (n===Infinity) return "Input number is Number.POSITIVE_INFINITY";
-  else if (n===-Infinity) return "Input number is Number.NEGATIVE_INFINITY";
-  else if (n==1.7976931348623157e+308) return "Input number is Number.MAX_VALUE";
+const whatNumberIsIt = (n) => {
+  if (n == Number.MAX_VALUE) return "Input number is Number.MAX_VALUE";
+  else if (n == Number.MIN_VALUE) return "Input number is Number.MIN_VALUE";
   else if (isNaN(n)) return "Input number is Number.NaN";
-  else if (n==5e-324) return "Input number is Number.MIN_VALUE";
-  else return ("Input number is "+n);
+  else if (n == Number.NEGATIVE_INFINITY) return "Input number is Number.NEGATIVE_INFINITY";
+  else if (n == Number.POSITIVE_INFINITY) return "Input number is Number.POSITIVE_INFINITY";
+  else return `Input number is ${n}`;
 }
+
+document.write(whatNumberIsIt(5e-324));
+
+// Codewars BEST solution
+// function whatNumberIsIt(n){
+//   switch (true) {
+//     case (n==Number.MAX_VALUE): return "Input number is Number.MAX_VALUE";
+//     case (n==Number.POSITIVE_INFINITY): return "Input number is Number.POSITIVE_INFINITY";
+//     case (n==Number.MIN_VALUE): return "Input number is Number.MIN_VALUE";
+//     case (n==Number.NEGATIVE_INFINITY): return "Input number is Number.NEGATIVE_INFINITY";
+//     case (isNaN(n)): return "Input number is Number.NaN";
+//     default: return "Input number is " + n;
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function whatNumberIsIt(n){
+//   if (n===Infinity) return "Input number is Number.POSITIVE_INFINITY";
+//   else if (n===-Infinity) return "Input number is Number.NEGATIVE_INFINITY";
+//   else if (n==1.7976931348623157e+308) return "Input number is Number.MAX_VALUE";
+//   else if (isNaN(n)) return "Input number is Number.NaN";
+//   else if (n==5e-324) return "Input number is Number.MIN_VALUE";
+//   else return ("Input number is "+n);
+// }
