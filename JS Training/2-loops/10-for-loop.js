@@ -29,7 +29,7 @@ For the example above, the running order of the code is:
                   -------------------------------------------
                   |                 true                    |
 var sum=0,num=1  --->  num<=100 ?  ------> code block---> num++
-                                |  
+                                |
                            false|
                        loop terminated
 When you need to traverse an array, you can use the for loop. look this example:
@@ -50,15 +50,47 @@ I've defined two array ```odd``` and ```even``` in the function, and also wrote 
 
 If you forgot how to push an element to array, please refer to [lesson 4](http://www.codewars.com/kata/571effabb625ed9b0600107a).
 */
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
-function pickIt(arr){
-  var odd=[],even=[];
-  for (var i=0; i<=arr.length-1; i++)
-  { if(arr[i] % 2 == 0){
+const pickIt = (arr) => {
+  var odd = [], even = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
       even.push(arr[i]);
+      // console.log(arr[i] + 'even');
     } else {
       odd.push(arr[i]);
+      // console.log(arr[i] + 'odd');
     }
   }
-  return [odd,even];
+  // Codwars BEST solution
+  // for (var x of arr) {
+  //   ((x % 2) ? odd : even).push(x)
+  // }
+  return [odd, even];
 }
+
+document.write(pickIt(arr));
+
+
+
+
+
+
+
+
+
+
+
+
+// function pickIt(arr){
+//   var odd=[],even=[];
+//   for (var i=0; i<=arr.length-1; i++)
+//   { if(arr[i] % 2 == 0){
+//       even.push(arr[i]);
+//     } else {
+//       odd.push(arr[i]);
+//     }
+//   }
+//   return [odd,even];
+// }
