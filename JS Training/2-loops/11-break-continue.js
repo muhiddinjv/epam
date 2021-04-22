@@ -15,13 +15,14 @@ function findFirstOddNumber(arr){
   }
   return result;
 }
+
 In this example, for loop traverse the array arr. when the first odd number found, break statement will jump out the for loop.
 
 In the loop statement, we can use continue skipping some code. for example, the following code ignores negative values:
 
 function dontDisplayNegative(arr){
   for (var i=0;i<arr.length;i++){
-    if (arr[i]<0) continue;   
+    if (arr[i]<0) continue;
     console.log(arr[i])
   }
 }
@@ -34,9 +35,9 @@ Ok, lesson is over. let's us do some task with break and continue.
 #Task
 Coding in function ```grabDoll```. function accept 1 parameter:```dolls```. it's a string array, a list of some dolls.
 
-You need traverse ```dolls``` by using ```for``` loop. If element is  "Hello Kitty" or "Barbie doll", you should push it to a ```bag```(bag is an array, I've defined in the function); if it's other strings, we should use ```continue``` skip it. 
+You need traverse ```dolls``` by using ```for``` loop. If element is  "Hello Kitty" or "Barbie doll", you should push it to a ```bag```(bag is an array, I've defined in the function); if it's other strings, we should use ```continue``` skip it.
 
-When the ```bag``` has three element, ```bag``` is full. You should use ```break``` jump out the loop; If ```bag``` is not full, you should traverse ```dolls``` until the last element. 
+When the ```bag``` has three element, ```bag``` is full. You should use ```break``` jump out the loop; If ```bag``` is not full, you should traverse ```dolls``` until the last element.
 
 Return the ```bag``` after for loop finished.
 
@@ -45,13 +46,63 @@ You should use ```for```, ```break``` and ```continue``` in your code. otherwise
 If you forgot how to push an element to array, please refer to [lesson 4](http://www.codewars.com/kata/571effabb625ed9b0600107a).
 */
 
-function grabDoll(dolls){
-  var bag=[];
-  for (let i = 0; i < dolls.length; i++) {
-  if (dolls[i] === 'Hello Kitty' || dolls[i] === 'Barbie doll') {
-      bag.push(dolls[i])
-    } else continue
+// function grabDoll(dolls){
+//   var bag=[];
+//   //coding here
+//   return bag;
+// }
 
-    if (bag.length >= 3) break}
+//My solution
+let dolls = ["Mickey Mouse", "Barbie doll", "Hello Kitty", "Hello Kitty", "Hello Kitty", "Snow white"];
+
+const grabDoll = (dolls) => {
+  var bag = [];
+  for (let i = 0; i < dolls.length; i++) {
+    const elem = dolls[i];
+    if (elem == "Hello Kitty" || elem == "Barbie doll") {
+      if (bag.length < 3) {
+        bag.push(elem);
+      } else { break };
+    } else { continue }
+  }
   return bag;
 }
+
+document.write(grabDoll(dolls))
+// let arr = [-1, -2, 1, 2, 3, 4, 5, 7, 8, 9, 0]
+// function dontDisplayNegative(arr) {
+//   for (var i = 0; i < arr.length; i++) {
+//     if (arr[i] < 0) continue;
+//     console.log(arr[i])
+//   }
+// }
+// document.write(dontDisplayNegative(arr));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function grabDoll(dolls){
+//   var bag=[];
+//   for (let i = 0; i < dolls.length; i++) {
+//   if (dolls[i] === 'Hello Kitty' || dolls[i] === 'Barbie doll') {
+//       bag.push(dolls[i])
+//     } else continue
+
+//     if (bag.length >= 3) break}
+//   return bag;
+// }

@@ -52,6 +52,13 @@ If you forgot how to push an element to array, please refer to [lesson 4](http:/
 */
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
+// Task to complete
+// const pickIt = (arr) => {
+//   var odd = [], even = [];
+
+//   return [odd, even];
+// }
+
 const pickIt = (arr) => {
   var odd = [], even = [];
   for (let i = 0; i < arr.length; i++) {
@@ -71,26 +78,3 @@ const pickIt = (arr) => {
 }
 
 document.write(pickIt(arr));
-
-
-
-
-
-
-
-
-
-
-
-
-// function pickIt(arr){
-//   var odd=[],even=[];
-//   for (var i=0; i<=arr.length-1; i++)
-//   { if(arr[i] % 2 == 0){
-//       even.push(arr[i]);
-//     } else {
-//       odd.push(arr[i]);
-//     }
-//   }
-//   return [odd,even];
-// }
