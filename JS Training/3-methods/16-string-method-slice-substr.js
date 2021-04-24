@@ -37,6 +37,7 @@ small()     Use small size to display string.
 strike()    Use the delete line to display the string.
 sub()       Display the string as a subscript.
 sup()       Display the string as a superscript.
+
 This time we learn three methods that used to obtain the substring of the string:slice() substring() and substr(). Their usage:
 
 StringObject.slice(startindex,endindex)
@@ -52,6 +53,7 @@ console.log(str.substr(6))
 World!
 World!
 World!
+
 We can see, the first parameter startindex can not be omitted, it represents the beginning of the interception of the string. Second parameter can be omitted, the three method will intercept the string to the end of the string. Look at the following example:
 
 var str="Hello World!";
@@ -69,8 +71,8 @@ console.log(str.slice(6,16))
 console.log(str.substring(6,16))
 console.log(str.substr(6,9))
 //output:
-beautiful 
-beautiful 
+beautiful
+beautiful
 beautiful
 We can see, In order to intercept the same string "beautiful", they use different parameters. Looks like substring and slice usage is similar, what is the difference between them? Look at the following example:
 
@@ -104,7 +106,20 @@ cutIt(["codewars","javascript","java"]) should return ["code","java","java"]
 ```
 */
 
-const cutIt = arr => {
-  const minLength = Math.min(...arr.map(str => str.length))
-  return arr.map(str => str.slice(0, minLength))
+const cutIt = (arr) => {
+  let newArr = [];
+  let min = Math.min(...arr.map(({ length }) => length));
+  for (let i = 0; i < arr.length; i++) {
+    let result = arr[i].slice(0, min);
+    newArr.push(result);
+  }
+  return newArr
 }
+
+document.write(cutIt(["codewars", "javascript", "java"]));
+
+// Codewars BEST solution
+// function cutIt(arr) {
+//   const minLength = Math.min(...arr.map(x => x.length));
+//   return arr.map(x => x.slice(0, minLength));
+// }
