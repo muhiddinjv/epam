@@ -18,8 +18,8 @@ Simple introduction is abstract, not easy to understand. Here we use examples to
 
 //example 1
 var num=111;
-var a=num.toFixed(), 
-    b=num.toExponential(), 
+var a=num.toFixed(),
+    b=num.toExponential(),
     c=num.toPrecision()
 console.log([a,b,c])   //put them to an array, we can see the quotes
 //output: [ '111', '1.11e+2', '111' ]
@@ -27,19 +27,19 @@ We can see, if the parameter n is omitted, a and c return a string with the numb
 
 //example 2
 var num=111.11;
-var a=num.toFixed(1), 
-    b=num.toExponential(1), 
+var a=num.toFixed(1),
+    b=num.toExponential(1),
     c=num.toPrecision(1)
-console.log([a,b,c]) 
+console.log([a,b,c])
 //output: [ '111.1', '1.1e+2', '1e+2' ]
 We can see, a returns a string with 1 decimal places, using fixed point counting method; b returns a string with 1 integer and 1 decimal places, using the exponential count method; c also uses the exponential count method, but returns a string with 1 integer.
 
 //example 3
 var num=111.11;
-var a=num.toFixed(6), 
-    b=num.toExponential(6), 
+var a=num.toFixed(6),
+    b=num.toExponential(6),
     c=num.toPrecision(6)
-console.log([a,b,c]) 
+console.log([a,b,c])
 //output: [ '111.110000', '1.111100e+2', '111.110' ]
 We can see, a returns a string with 6 decimal places(make up with "0"), using fixed point counting method; b returns a string with 1 integer and 6 decimal places(make up with "0"), using the exponential count method; c returns a string with 3 integer and 3 decimal places(make up with "0"), returns the integer and decimal numbers in the string to a total of 6 digits.
 
@@ -55,16 +55,16 @@ var s=num.toFixed(2)   //s=="111.12"
 var a=parseInt(s),
     b=parseFloat(s),
     c= +s
-console.log([a,b,c]) 
+console.log([a,b,c])
 //output: [ 111, 111.12, 111.12 ]
 We can see, use parseInt(s) can convert s to an integer; use parseFloat(s) can convert s to a decimal; The '+' is a simplified form of the parseFloat()(when it is used in front of a string).
 
 Ok, lesson is over. let's us do some task.
 
 #Task
-Coding in function ```howManySmaller```, function accept 2 parameter:```arr``` and ```n```. ```arr``` is a decimal array. ```n``` is a decimal. 
+Coding in function ```howManySmaller```, function accept 2 parameter:```arr``` and ```n```. ```arr``` is a decimal array. ```n``` is a decimal.
 
-The first mission: let all elements in the array keep two decimal places(No need to convert number n). 
+The first mission: let all elements in the array keep two decimal places(No need to convert number n).
 
 The second mission: Traversal arr, count the number of the element which smaller than n and return it.
 
@@ -77,8 +77,22 @@ howManySmaller([3.1288,3.1212,3.1205],3.1212) should return 2
 ```
 */
 
-
-function howManySmaller(arr,n){
-  return arr.filter( x => x.toFixed(2)<n).length;
-  
+const howManySmaller = (arr, n) => {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    let x = arr[i].toFixed(2);
+    newArr.push(x);
+  }
+  function filterIt(small) {
+    return small < n;
+  }
+  let a = newArr.filter(filterIt);
+  return a.length;
 }
+document.write(howManySmaller([3.1288, 3.1212, 3.1205], 3.1212));
+
+// Codwars BEST solution
+// function howManySmaller(arr,n){
+//   return arr.filter( x => x.toFixed(2)<n).length;
+
+// }

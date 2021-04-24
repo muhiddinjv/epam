@@ -60,7 +60,7 @@ const colorOf = (r, g, b) => {
         // if (num[i] >= 0 && num[i] <= 255) {
         var strNum = num[i].toString(16);
         arr.push(strNum)
-        // }
+        // } // NOT NECESSARY
         if (arr[i].length < 2) { arr[i] = `0${arr[i]}` }
     }
     return "#" + arr.join("");
@@ -83,7 +83,6 @@ document.write(colorOf(0, 111, 0));
 // function colorOf(r, g, b) {
 //     return "#" + toHex(r) + toHex(g) + toHex(b)
 // }
-
 // function toHex(n) {
 //     var result = n.toString(16);
 //     return result.length == 1 ? "0" + result : result;
