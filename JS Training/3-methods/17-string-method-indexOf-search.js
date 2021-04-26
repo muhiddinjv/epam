@@ -1,6 +1,5 @@
 /*
-Description:
-Training JS #17:
+Description: Training JS #17
 Methods of String object--indexOf(), lastIndexOf() and search()
 
 This time we learn three methods to retrieve the string:indexOf() lastIndexOf() and search(). Their usage:
@@ -60,8 +59,8 @@ From this example we can see that indexOf() and lastIndexOf() can not find "worl
 
 Ok, lesson is over. let's us do some task.
 
-#Task
-Coding in function ```firstToLast```, function accept 2 parameters:```str``` and ```c```. ```str``` is a string. ```c``` is a char. 
+#Task:
+Coding in function ```firstToLast```, function accept 2 parameters:```str``` and ```c```. ```str``` is a string. ```c``` is a char.
 
 Please return the gap between the first position of ```c``` and the last position of ```c```.
 
@@ -76,10 +75,10 @@ firstToLast("ababc","d") should return -1
 ```
 */
 
-function firstToLast(str,c){
-var first=str.indexOf(c),last=str.lastIndexOf(c);
-var lenght=last-first;
+const firstToLast = (str, char) => {
+  if (str.lastIndexOf(char) - str.indexOf(char)) {
 
-return str.includes(c)?lenght:str.indexOf(c);
-  
+  }
 }
+
+document.write(firstToLast("ababc", "a"))
