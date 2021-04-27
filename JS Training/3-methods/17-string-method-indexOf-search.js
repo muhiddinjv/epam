@@ -75,10 +75,26 @@ firstToLast("ababc","d") should return -1
 ```
 */
 
-const firstToLast = (str, char) => {
-  if (str.lastIndexOf(char) - str.indexOf(char)) {
+const firstToLast = (str, c) => {
+  let arr = [];
 
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === c) { arr.push(str[i]) }
   }
-}
 
-document.write(firstToLast("ababc", "a"))
+  var letters = arr.length;
+
+  if (letters === 1) { return 0; }
+  else if (letters > 1) {
+    // if (letters % 2 === 0) { return letters; }
+    return str.lastIndexOf(c) - str.indexOf(c);
+  } else { return -1 }
+
+}
+console.log(firstToLast("cahlaflnzmsclxmxtugxexnkjpmrkjaccsjesclvnjpbyj", "e")); //15
+
+// Codewars BEST solution
+// function firstToLast(str,c){
+//   var first = str.indexOf(c), last = str.lastIndexOf(c);
+//   return first == -1 ? -1 : last - first;
+// }
