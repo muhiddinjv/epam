@@ -14,8 +14,8 @@
 ##### #10: [loop statement --for](http://www.codewars.com/kata/5721a78c283129e416000999)
 ##### #11: [loop statement --break,continue](http://www.codewars.com/kata/5721c189cdd71194c1000b9b)
 ##### #12: [loop statement --for..in and for..of](http://www.codewars.com/kata/5722b3f0bd5583cf44001000)
-##### #13: [Number object and its properties](http://www.codewars.com/kata/5722fd3ab7162a3a4500031f)
 ### Methods - Number
+##### #13: [Number object and its properties](http://www.codewars.com/kata/5722fd3ab7162a3a4500031f)
 ##### #14: [Methods of Number object--toString() and toLocaleString()](http://www.codewars.com/kata/57238ceaef9008adc7000603)
 ##### #15: [Methods of Number object--toFixed(), toExponential() and toPrecision()](http://www.codewars.com/kata/57256064856584bc47000611)
 ### Methods - String
