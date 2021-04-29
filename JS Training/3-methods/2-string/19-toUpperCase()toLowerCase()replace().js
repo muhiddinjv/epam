@@ -112,10 +112,10 @@ const alienLanguage = str => {
   return arr.join(" ");
 }
 
-console.log(alienLanguage('this is an example'));
-
 // Codewars BEST solution
-// function alienLanguage(str){
-//   return str.replace(/\w+/g, w => w.slice(0,-1)
-//.toUpperCase() + w.slice(-1).toLowerCase());
-// }
+// const alienLanguage = str =>
+//   str.toUpperCase()
+//     .replace(/\w\b/g, val => val.toLowerCase());
+
+
+console.log(alienLanguage('this is an example'));
