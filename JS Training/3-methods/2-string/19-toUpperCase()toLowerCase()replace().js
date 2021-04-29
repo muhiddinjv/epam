@@ -52,16 +52,16 @@ for (var i=0;i<words.length;i++){
 }
 console.log(words.join(" "));
 
-//output:
-This Is An Example.
+//output: This Is An Example.
+
 If the parameter 1 of replace() is a regular expression, it will be more simple(We don't even need to split the string):
 
 var str="this is an example.";
 var result=str.replace(/\b\w/g,x=>x.toUpperCase());
 console.log(result);
 
-//output:
-This Is An Example.
+//output: This Is An Example.
+
 This code uses a regular expression and an arrow function. This allows us to achieve a more powerful role in the code. All of these will be learning in the future lesson. We need to do now is to learn the basics.
 
 Another point needs to pay attention: If replace() uses a regular expression as parameter 1, and all the characters that match the regular expression are replaced(The regular expression uses a global matching option g). If we use a string as a parameter 1, only the first match(from left to right) of the string is replaced. like this:
@@ -70,8 +70,8 @@ var str="example";
 var result=str.replace("e","@");
 console.log(result);
 
-//output:
-@xample
+//output: @xample
+
 As you can see, the second "e" will not be replaced.
 
 Ok, lesson is over. let's us do some task.
@@ -81,12 +81,41 @@ Coding in function alienLanguage, function accept 1 parameter:str. str is a sent
 
 We translate the sentence into an alien language according to the following rules:
 
-Each word in the sentence is separated by spaces. The last letter of each word in the sentence turns to lowercase, and the other letters are capitalized. Looks very strange? Because this is the form of alien language ;-)
+1) Each word in the sentence is separated by spaces. 
+2) The last letter of each word in the sentence turns to lowercase, 
+3) the other letters are capitalized. 
+
+Looks very strange? Because this is the form of alien language ;-)
 
 for example:
 
 alienLanguage("My name is John") should return "My NAMe Is JOHn"
 alienLanguage("this is an example") should return "THIs Is An EXAMPLe"
 alienLanguage("Hello World") should return "HELLo WORLd"
+
 A small hint: The first conversion of the entire string will make the code easier
 */
+
+const alienLanguage = str => {
+  var words = str.split(" ");
+  console.log(words);
+
+  let arr = [];
+  for (var i = 0; i < words.length; i++) {
+    // words[i] = words[i].toUpperCase();
+    // let lastChar = words[i].charAt(words[i].length - 1);
+    // let lowerCase = words[i].replace(lastChar, lastChar.toLowerCase());
+    let lowerCase = words[i].toUpperCase().replace((/[a-zA-Z]\b/g), c => c.toLowerCase());
+    arr.push(lowerCase);
+    // .replace(words[i][0], words[i][0].toLowerCase())
+  }
+  return arr.join(" ");
+}
+
+console.log(alienLanguage('this is an example'));
+
+// Codewars BEST solution
+// function alienLanguage(str){
+//   return str.replace(/\w+/g, w => w.slice(0,-1)
+//.toUpperCase() + w.slice(-1).toLowerCase());
+// }
