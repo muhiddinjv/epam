@@ -1,6 +1,5 @@
 /*
-7 kyu
-Training JS #20: Methods of String object--charAt() charCodeAt() and fromCharCode()
+7 kyu: Training JS #20: Methods of String object--charAt() charCodeAt() and fromCharCode()
 
 This time we learn three string methods used to single character operation :charAt() charCodeAt() and fromCharCode(). Their usage:
 
@@ -23,6 +22,7 @@ console.log(str[1]);
 //output:
 a
 b
+
 charCodeAt() method can return the specified location of the character of the Unicode encoding. This return value is an integer between 0 and 65535.
 
 Method charCodeAt() and charAt() operation is similar, but the former is returned to the specified location of the character encoding, and the latter is returned to the character string.
@@ -153,3 +153,9 @@ console.log(topSecret("hi"));
 // console.log("encode:", s)    //encryption s
 // s = decode(s);
 // console.log("decode:", s)    //decryption s
+
+var chars = [];
+for (var i = 97; i < 123; i++) {
+  chars.push(String.fromCharCode(i));
+}
+console.log(chars.join(""))
