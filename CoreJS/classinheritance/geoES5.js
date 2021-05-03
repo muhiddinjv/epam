@@ -1,7 +1,5 @@
 "use strict";
 
-var x = 3.14;
-delete x;
 // function Point(x, y) {
 //   this.x = x;
 //   this.y = y;
