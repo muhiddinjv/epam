@@ -18,7 +18,7 @@ class User {
 // bob.register();
 // User.countUsers();
 
-//INHERIT & EXTEND CLASSES
+//INHERIT CLASSES
 class Member extends User {
   constructor(username, email, password, memberPackage) {
     super(username, email, password);

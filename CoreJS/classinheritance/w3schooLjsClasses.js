@@ -1,5 +1,6 @@
 "use strict" // If you use/delete a variable, object, function without declaring it, you will get an error.
 
+//-----------------------------------------------------------------
 
 // 1-INTRO
 // class Car {
@@ -21,7 +22,7 @@
 //   ${myCar.age(date)} years old and can go 
 //   ${myCar.speed(200)} kph`;
 
-//------------------------------------------------------------------------------------
+//-----------------------------------------------------------------
 
 // 2-INHERITANCE: A class created with a class inheritance (extends) inherits all the methods from another class. Inheritance is useful for code reusability: reuse properties and methods of an existing class when you create a new class.
 // class Car {
@@ -67,7 +68,7 @@ class Car {
     return `${x.name} is ${x.age()} years old and can go ${x.speed} kph`
   }
 }
-
+// If you want to use the myCar object inside the static method, you can send it as a parameter
 let myCar = new Car("Ford", 1984, 300);
 
 // You can calll 'hello()' on the Car Class:
