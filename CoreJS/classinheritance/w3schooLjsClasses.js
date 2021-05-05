@@ -69,10 +69,10 @@ class Car {
   }
 }
 // If you want to use the myCar object inside the static method, you can send it as a parameter
-let myCar = new Car("Ford", 1984, 300);
+// let myCar = new Car("Ford", 1984, 300);
 
 // You can calll 'hello()' on the Car Class:
-document.getElementById("demo").innerHTML = Car.hello(myCar);
+// document.getElementById("demo").innerHTML = Car.hello(myCar);
 
 // But NOT on a Car Object:
 // document.getElementById("demo").innerHTML = myCar.hello();
