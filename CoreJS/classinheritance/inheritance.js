@@ -8,6 +8,7 @@ class Base {
     this.value = this.val + v.reduce((totalSum, currentValue) => totalSum + currentValue);
     return this;
   };
+  minus(n) { return this.val.slice(0, -n) };
 
 }
 
@@ -33,43 +34,29 @@ class IntBuilder extends Base {
   }
 }
 
-// class StringBuilder extends Base {
-//   constructor(val) {
-//     val = typeof val === 'string' ? val : "";
-//     super(val);
-//   }
-//   remove(val) {
-//     let index = this.x.indexOf(val);
-//     this.x =
-//       this.x.substring(0, index) +
-//       this.x.substring(index + val.length, this.x.length);
-//     return this;
-//   }
-//   multi(n) {
-//     return n * this.val;
-//   }
-// }
-
-
 function StringBuilder(val) {
-  // val = typeof val === 'string' ? val : "";
+  val = typeof val === 'string' ? val : "";
   Object.assign(this, new Base(val));
 }
 
 StringBuilder.multiply = function (n) {
   return strBuilder.val.repeat(n)
 }
+// StringBuilder.minus = function (n) {
+//   console.log(strBuilder.val.substr(n))
+// }
 StringBuilder.prototype = Object.create(Base.prototype);
 
 //NUMBER -------------------------------------------------------
-const intBuilder = new IntBuilder(10);
+let intBuilder = new IntBuilder(10);
 console.log(intBuilder.plus(2, 3, 2).minus(1, 2).multiply(2).divide(4).mod(3).value);
 console.log(intBuilder.stored); // get method
 console.log(IntBuilder.random(10, 100)); // static method
 
 // STRING -------------------------------------------------------
-const strBuilder = new StringBuilder("Hello");
+let strBuilder = new StringBuilder("Hello");
 console.log(strBuilder.plus(' all', '!').value);
-console.log(StringBuilder.multiply(2));
-// console.log(strBuilder.remove('l'));
+console.log(strBuilder.minus(1));
+// console.log(StringBuilder.multiply(2));
+// console.log(StringBuilder.minus());
 
