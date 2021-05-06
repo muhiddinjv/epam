@@ -3,7 +3,7 @@
 class IntBuilder {
   constructor(int) {
     int > 0 ? this.int = int : int = 0;
-    // this.value = 0;
+    this.value = 0;
   };
   plus(...n) {
     this.value = n.reduce((totalSum, currentValue) => totalSum + currentValue) + this.int;
@@ -24,12 +24,9 @@ class IntBuilder {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 }
+
+
 const newInt = new IntBuilder(10);
 console.log(newInt.plus(2, 3, 2).minus(1, 2).multiply(2).divide(4).mod(3).value);
 console.log(newInt.stored); // get method
 console.log(IntBuilder.random(10, 100)); // static method
-
-
-
-
-

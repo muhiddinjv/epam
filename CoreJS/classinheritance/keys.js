@@ -17,8 +17,10 @@
 // Consider modifying the logic in the catch block or completely removing try and catch. Currently they’re useless because you throw an error, catch it and then throw another one without any error handling logic. Try - catch blocks should be used when you have some error handling logic that should be executed for the program to continue running correctly (without crashing). In this case you may completely remove the try catch and just throw an error and stop the program or leave try and catch but in the catch statement handle an error for example by logging the message and then resume program execution without crashing
 
 //   Hi, I'm trying to submit this task. When I do PR on the branch with this task, I get the info: "There isn't anything to compare. Javascript-classes-inheritance and master are entirely different commit histories." or "No commit comments for this range". What can I do to perform PR?
+
 // taroxlin — 05/03/2020
 // @MichałKukiełka Its nothing to compare because your new project was done from scratch not via clone master. If you clone from master branch the init commit for both are same.
+
 // I did it that way : Copy code/files to safe spot clean remove inhertance local and remote repo. Then just make again inheritance branch using cloning the master then u can paste your inheritance files there.
 
 // remove method solution spoiler = >  You can do the remove method by splitting the string into array by the string you want to remove  and then join it
