@@ -10,20 +10,12 @@ class Base {
   };
   minus(n) { return this.val.slice(0, -n) }; // STRING
   divide(n) { return this.val.slice(0, n) }
-  allChosenChars(str) {
-    let char = this.val.split('');
-    const chars = char.filter(a => a === str);
-    return chars
-  }
   remove(str) {
     let char = this.val.split('');
-    let chars = char.filter(val => val === str ? val.indexOf() : 0);
-    return chars;
-    // let index = this.x.indexOf('s');
-    // this.x =
-    //   this.x.substring(0, index) +
-    //   this.x.substring(index + str.length, this.x.length);
-    // return this;
+    let chars = char.filter(val => val === str);
+    for (let x = 0; x < chars.length; x++) {
+      return this.val.split(chars[x]).join('')
+    }
   }
 }
 class IntBuilder extends Base {
