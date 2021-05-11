@@ -3,7 +3,7 @@
 class Base {
   constructor(val) {
     this.val = val;
-  }
+  };
   plus(...v) {
     this.value = this.val + v.reduce((totalSum, currentValue) => totalSum + currentValue);
     return this;
@@ -13,9 +13,12 @@ class Base {
   remove(str) {
     let char = this.val.split('');
     let chars = char.filter(val => val === str);
-    for (let x = 0; x < chars.length; x++) {
-      return this.val.split(chars[x]).join('')
+    for (let i = 0; i < chars.length; i++) {
+      return this.val.split(chars[i]).join('')
     }
+  }
+  sub(s, l) {
+    return this.val.substr(s, l);
   }
 }
 class IntBuilder extends Base {
@@ -70,3 +73,4 @@ console.log(strBuilder.minus(4));
 console.log(StringBuilder.multiply(2));
 console.log(strBuilder.divide(4));
 console.log(strBuilder.remove("l"));
+console.log(strBuilder.sub(1, 1));
