@@ -17,10 +17,13 @@ class Base {
       return this.val.split(chars[i]).join('')
     }
   }
+  get stored() { return this.value; };
   sub(s, l) {
     return this.val.substr(s, l);
   }
 }
+
+// NUMBER -------------------------------------------------
 class IntBuilder extends Base {
   constructor(val) {
     val = typeof val === 'number' ? val : 0;
@@ -35,7 +38,6 @@ class IntBuilder extends Base {
   multiply(n) { this.value = this.value * n; return this; };
   divide(n) { this.value = this.value / n; return this; };
   mod(n) { this.value = this.value % n; return this; };
-  get stored() { return this.value; };
   static random(from, to) {
     let min = Math.ceil(from);
     let max = Math.floor(to);
@@ -43,18 +45,6 @@ class IntBuilder extends Base {
   }
 }
 
-function StringBuilder(val) {
-  val = typeof val === 'string' ? val : "";
-  Object.assign(this, new Base(val));
-}
-
-StringBuilder.multiply = function (n) {
-  return strBuilder.val.repeat(n)
-}
-
-StringBuilder.prototype = Object.create(Base.prototype);
-
-// NUMBER ------------------------------------------------------
 let intBuilder = new IntBuilder(10);
 console.log(intBuilder
   .plus(2, 3, 2)
@@ -66,11 +56,22 @@ console.log(intBuilder
 console.log(intBuilder.stored); // get method
 console.log(IntBuilder.random(10, 100)); // static method
 
-// STRING -------------------------------------------------------
+// STRING ----------------------------------------------------------
+function StringBuilder(val) {
+  // val = typeof val === 'string' ? val : "";
+  Object.assign(this, new Base(val));
+}
+
+StringBuilder.multiply = function (n) {
+  return strBuilder.val.repeat(n)
+}
+StringBuilder.prototype = Object.create(Base.prototype);
+
 let strBuilder = new StringBuilder("Hello");
-console.log(strBuilder.plus(' all', '!').value);
-console.log(strBuilder.minus(4));
+console.log(strBuilder.plus(' all', '!'));
+console.log(strBuilder.minus(3));
 console.log(StringBuilder.multiply(2));
 console.log(strBuilder.divide(4));
 console.log(strBuilder.remove("l"));
-console.log(strBuilder.sub(1, 1));
+console.log(strBuilder.sub(3, 1));
+// console.log(strBuilder.stored);
