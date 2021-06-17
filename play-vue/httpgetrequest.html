@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP GET</title>
+</head>
+
+<body>
+  <!-- asdad -->
+  <div id="app">
+    {{ info }}
+  </div>
+  <script src="vue.js">
+    // const axios = require('axios')
+
+    // const getBreeds = async () => {
+    //   try {
+    //     return await axios.get('https://dog.ceo/api/breeds/list/all')
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // }
+
+    // const countBreeds = async () => {
+    //   const breeds = await getBreeds()
+
+    //   if (breeds.data.message) {
+    //     console.log(`Got ${Object.entries(breeds.data.message).length} breeds`)
+    //   }
+    // }
+
+    // countBreeds()
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          info: null
+        }
+      },
+      mounted() {
+        axios
+          .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+          .then(response => (this.info = response))
+      }
+    })
+  </script>
+  <!-- <script src="axios.min.js" defer></script> -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+</body>
+
+</html>
