@@ -1,0 +1,11 @@
+body {
+  font-family: sans-serif;
+}
+.code {
+  background: gray;
+  color: white;
+}
+
+.width_600{
+  width: 600px;
+}
