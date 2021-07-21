@@ -22,16 +22,26 @@ const ToDoList = () => {
 // COMPONENT 2 ------------------------------
 const Async = () => {
   //const style = { fontSize:"22px" };
-  const code = `
+  const callBackCode = `
     const show = sum => document.getElementById("demo").innerHTML = sum;
     const calc = (n1, n2, show) => show(n1 + n2) 
     calc(8,3, show); // Calc & then show the result.
     //------ "show" is a callback function here  
   `;
+  const asynCode = `
+    setTimeout(show, 3000); // Async function here  
+    const show = () => document.getElementById("demo").innerHTML = "I Love You!";
+  `;
+  const asyncFunc = () => {
+    setTimeout(show, 3000); // Async function here  
+    const show = () => document.write("I Love You!");
+  }
   return (
     <div>
       <h3>Asyncronous JavaScript (Event Loop)</h3>
       <div className="callbacks">
+
+      {/* JAVASCRIPT CALLBACKS */}
         <h4>JS Callbacks</h4>
         <p className="width_600">
           A callback is a function passed as an argument to another function. It
@@ -39,7 +49,17 @@ const Async = () => {
           shine are in async functions, where one function has to wait for
           another function (like waiting for a file to load)
         </p>
-        <pre className="code width_600">{code}</pre>
+        <pre className="code width_600">{callBackCode}</pre>
+      </div>
+
+      {/* ASYNCHRONOUS JAVASCRIPT */}
+      <div className="async">
+        <h4>JS Asyncronous</h4>
+        <p className="width_600" onClick={asyncFunc}>
+          Functions (calculate) running in parallel with other functions
+          (setTimeout()) are called asynchronous. Click here to see the result!
+        </p>
+        <pre className="code width_600">{asynCode}</pre>
       </div>
     </div>
   );
