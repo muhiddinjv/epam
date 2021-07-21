@@ -154,8 +154,8 @@ console.log(topSecret("hi"));
 // s = decode(s);
 // console.log("decode:", s)    //decryption s
 
-var chars = [];
-for (var i = 97; i < 123; i++) {
-  chars.push(String.fromCharCode(i));
-}
-console.log(chars.join(""))
+// var chars = [];
+// for (var i = 97; i < 123; i++) {
+//   chars.push(String.fromCharCode(i));
+// }
+// console.log(chars.join(""))
