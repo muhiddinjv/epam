@@ -56,23 +56,23 @@ const Async = () => {
   };
   return (
     <div className="main">
-      <div>
+      <div className="width_600">
         <h3>Asyncronous JS (Event Loop)</h3>
         <div className="callbacks">
           {/* CALLBACKS ----------------------------------------- */}
           <h4>JS Callbacks</h4>
-          <p className="width_600">
+          <p >
             A callback is a function passed as an argument to another function.
             It can run after another function has finished. Where callbacks
             really shine are in async functions.
           </p>
-          <pre className="code width_600">{callBackCode}</pre>
+          <pre className="code">{callBackCode}</pre>
         </div>
 
         {/* ASYNCHRONOUS ----------------------------------------- */}
         <div className="async">
           <h4>JS Asyncronous</h4>
-          <p className="width_600">
+          <p>
             Functions (show) running in parallel with other functions
             (setTimeout()) are called asynchronous = one function has to wait
             for another function (like waiting for a file to load, timeout or
@@ -84,7 +84,7 @@ const Async = () => {
         {/* PROMISES ----------------------------------------- */}
         <div className="promise">
           <h4>JS Promises</h4>
-          <p className="width_600">
+          <p>
             "Producing code" can take some time. "Consuming code" must wait for
             the result. A Promise is an object that links producing code and
             consuming code.
