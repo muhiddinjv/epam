@@ -36,19 +36,47 @@ const Async = () => {
   `;
 
   const promise = `
-    let myPromise = new Promise((resolve, reject) => {
-      // "Producing Code" (May take some time)
-      
-        resolve(); // when successful
-        reject();  // when error
-      });
-      
-      // "Consuming Code" (Must wait for a fulfilled Promise)
-      myPromise.then(
-        function(value) { /* code if successful */ },
-        function(error) { /* code if some error */ }
-      );
+  let myPromise = new Promise((resolve, reject) => {
+    // "Producing Code" (May take some time)
+    
+      resolve(); // when successful
+      reject();  // when error
+    });
+    
+    // "Consuming Code" (Must wait for a fulfilled Promise)
+    myPromise.then(
+      function(value) { /* code if successful */ },
+      function(error) { /* code if some error */ }
+    );
   `;
+  const promiseHowTo = `
+    myPromise.then(
+      function(value) { /* code if successful */ },
+      function(error) { /* code if some error */ }
+    );
+  `;
+  const callbackVsPromise = `
+  // example using Callback -----------------------------------------------
+    const callback = value => document.querySelector('h1').innerHTML = value;
+    setTimeout(()=>{callback('I love you!')}, 2000)
+
+
+  // example using Promise -----------------------------------------------
+  let ipromise = new Promise((resolve, reject) => {
+    let x = false;
+    setTimeout(() => { 	
+      x == false ? resolve("You love me too!") 
+      : reject("But you dont love me!");
+    }, 3000);
+  });
+
+  ipromise.then(
+    (value) => {show(value);},
+    (error) => {show(error);}
+  );
+  ipromise.then(show = value => document.getElementById("demo").innerHTML = value);
+  `;
+
   const asyncFunc = () => {
     setTimeout(() => {
       alert("I love you baby!");
@@ -61,12 +89,12 @@ const Async = () => {
         <div className="callbacks">
           {/* CALLBACKS ----------------------------------------- */}
           <h4>JS Callbacks</h4>
-          <p >
+          <p>
             A callback is a function passed as an argument to another function.
             It can run after another function has finished. Where callbacks
             really shine are in async functions.
           </p>
-          <pre className="code">{callBackCode}</pre>
+          <pre>{callBackCode}</pre>
         </div>
 
         {/* ASYNCHRONOUS ----------------------------------------- */}
@@ -78,7 +106,7 @@ const Async = () => {
             for another function (like waiting for a file to load, timeout or
             interval) <i onClick={asyncFunc}>Click here and wait 3 seconds!</i>
           </p>
-          <pre className="code width_600">{asynCode}</pre>
+          <pre>{asynCode}</pre>
         </div>
 
         {/* PROMISES ----------------------------------------- */}
@@ -89,7 +117,7 @@ const Async = () => {
             the result. A Promise is an object that links producing code and
             consuming code.
           </p>
-          <pre className="code width_600">{promise}</pre>
+          <pre>{promise}</pre>
           <div>
             <h4>Promise Object Properties</h4>
             <p>A JavaScript Promise object can be:</p>
@@ -98,33 +126,56 @@ const Async = () => {
               <li>Fulfilled</li>
               <li>Rejected</li>
             </ul>
-            <p>The Promise object supports two properties: <b>state</b> and <b>result</b>.</p>
             <p>
-              While a Promise object is "pending" (working), the result is undefined.
-            </p>
-            <p>When a Promise object is "fulfilled", the result is a value.</p>
-            <p>
-              When a Promise object is "rejected", the result is an error object.
+              The Promise object supports two properties: <b>state</b> and{" "}
+              <b>result</b>.
+              <br /> While a Promise object is "pending" (working), the result
+              is undefined.
+              <br /> When a Promise object is "fulfilled", the result is a
+              value.
+              <br /> When a Promise object is "rejected", the result is an error
+              object.
             </p>
           </div>
           <table>
-            <tr>
-              <th>Company</th>
-              <th>Contact</th>
-            </tr>
-            <tr>
-              <td>Alfreds Futterkiste</td>
-              <td>Maria Anders</td>
-            </tr>
-            <tr>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-            </tr>
-            <tr>
-              <td>Ernst Handel</td>
-              <td>Roland Mendel</td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>myPromise.state</th>
+                <th>myPromise.result</th>
+              </tr>
+              <tr>
+                <td>"pending"</td>
+                <td>undefined</td>
+              </tr>
+              <tr>
+                <td>"fulfilled"</td>
+                <td>a result value</td>
+              </tr>
+              <tr>
+                <td>"rejected"</td>
+                <td>an error object</td>
+              </tr>
+            </tbody>
           </table>
+          <div className="note">
+            <p>
+              You cannot access the Promise properties <b>state</b> and{" "}
+              <b>result</b>.
+              <br /> You must use a Promise method to handle promises.
+            </p>
+          </div>
+          <div>
+            <h4>How to Use a Promise</h4>
+            <pre>{promiseHowTo}</pre>
+            <div className="note">
+              <p>
+                Promise.then() takes two (optional) arguments, a callback for
+                success and another for failure. You can add a callback for
+                success or failure only.
+              </p>
+              <pre>{callbackVsPromise}</pre>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -156,6 +207,7 @@ class App extends React.Component {
   // thisObject=()=>{ alert(this) };
   render() {
     const man = { name: "Bill", height: 145 };
+
     return (
       <div className="main">
         <div>
