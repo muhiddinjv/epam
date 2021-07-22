@@ -1,11 +1,15 @@
 body {
   font-family: sans-serif;
+  background: #f1f1f1;
+  color: rgb(40,44,52);
+}
+.main{
+  display: flex;
+  justify-content: center;
 }
 .code {
-  background: gray;
+  background: rgb(40,44,52);;
   color: white;
 }
 
-.width_600{
-  width: 600px;
-}
+.width_600{ width: 600px; }
