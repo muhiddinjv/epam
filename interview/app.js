@@ -36,7 +36,7 @@ const Async = () => {
   `;
 
   const promise = `
-    let myPromise = new Promise(function(resolve, reject) {
+    let myPromise = new Promise((resolve, reject) => {
       // "Producing Code" (May take some time)
       
         resolve(); // when successful
@@ -90,6 +90,41 @@ const Async = () => {
             consuming code.
           </p>
           <pre className="code width_600">{promise}</pre>
+          <div>
+            <h4>Promise Object Properties</h4>
+            <p>A JavaScript Promise object can be:</p>
+            <ul>
+              <li>Pending</li>
+              <li>Fulfilled</li>
+              <li>Rejected</li>
+            </ul>
+            <p>The Promise object supports two properties: <b>state</b> and <b>result</b>.</p>
+            <p>
+              While a Promise object is "pending" (working), the result is undefined.
+            </p>
+            <p>When a Promise object is "fulfilled", the result is a value.</p>
+            <p>
+              When a Promise object is "rejected", the result is an error object.
+            </p>
+          </div>
+          <table>
+            <tr>
+              <th>Company</th>
+              <th>Contact</th>
+            </tr>
+            <tr>
+              <td>Alfreds Futterkiste</td>
+              <td>Maria Anders</td>
+            </tr>
+            <tr>
+              <td>Centro comercial Moctezuma</td>
+              <td>Francisco Chang</td>
+            </tr>
+            <tr>
+              <td>Ernst Handel</td>
+              <td>Roland Mendel</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
@@ -124,13 +159,13 @@ class App extends React.Component {
     return (
       <div className="main">
         <div>
-        <ToDoList />
-        <h5 onClick={this.changeColor}>
-          {this.state.action} this {this.state.color} {this.state.brand} owned
-          by {this.state.owners[0]}!
-        </h5>
-        <Async />
-      </div>
+          <ToDoList />
+          <h5 onClick={this.changeColor}>
+            {this.state.action} this {this.state.color} {this.state.brand} owned
+            by {this.state.owners[0]}!
+          </h5>
+          <Async />
+        </div>
       </div>
     );
   }
