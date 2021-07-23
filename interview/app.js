@@ -5,7 +5,7 @@ const ToDoList = () => {
   return (
     <div className="main">
       <div>
-        <h2>After EPAM Interview</h2>
+        <h1>After EPAM Interview</h1>
         <h3>Suggestions for a candidate</h3>
         <ol>
           <li>JS Core: Event Loop, Queue, Stack; Promises; Generator</li>
@@ -61,9 +61,9 @@ const Async = () => {
     setTimeout(()=>{callback('I love you!')}, 2000)
 
 
-  // example using Promise -----------------------------------------------
+  // example using Promise ------------------------------------------------
   let ipromise = new Promise((resolve, reject) => {
-    let x = false;
+    let x = true;
     setTimeout(() => { 	
       x == false ? resolve("You love me too!") 
       : reject("But you dont love me!");
@@ -77,15 +77,26 @@ const Async = () => {
   ipromise.then(show = value => document.getElementById("demo").innerHTML = value);
   `;
 
+  const asyncAwait = `
+  async function myDisplay() {
+    let myPromise = new Promise((resolve, reject) => {
+      setTimeout(() => { resolve("I love You !!"); }, 3000);
+    });
+    document.getElementById("demo").innerHTML = await myPromise;
+  }
+  myDisplay();
+  `;
+
   const asyncFunc = () => {
     setTimeout(() => {
       alert("I love you baby!");
     }, 3000); // Async function here
   };
+
   return (
     <div className="main">
       <div className="width_600">
-        <h3>Asyncronous JS (Event Loop)</h3>
+        <h2>Asyncronous JS (Event Loop)</h2>
         <div className="callbacks">
           {/* CALLBACKS ----------------------------------------- */}
           <h4>JS Callbacks</h4>
@@ -176,11 +187,54 @@ const Async = () => {
               <pre>{callbackVsPromise}</pre>
             </div>
           </div>
+          <div>
+            <h4>JS Async</h4>
+            <div className="note">
+              <p>
+                Async and await make promises easier to write! <br /> async
+                makes a function return a Promise <br /> await makes a function
+                wait for a Promise
+              </p>
+            </div>
+            <pre>{asyncAwait}</pre>
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
+// ACCORDION ----------------------------------
+class Accordion extends React.Component {
+  // const [show, toggleShow] = useState(false);
+  constructor(props) {
+    super(props);
+    this.state = { show: false, };
+  }
+
+  toggleShow = () => this.setState({show: !this.state.show});
+
+  render() {
+    const {show} = this.state;
+    return (
+      <div>
+        <button onClick={() => this.toggleShow()}>
+        {show ? "Hide" : "Show"} My Notes
+      </button>
+        {/* <button onClick={() => this.toggleDisplay()}>toggle</button> */}
+        {show && (
+        <div className="panel">
+          <p className={close ? "Hide" : "Show"}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+        </div>)}
+      </div>
+    );
+  }
+}
 
 // COMPONENT APP ------------------------------
 class App extends React.Component {
@@ -195,28 +249,29 @@ class App extends React.Component {
       year: 1964,
     };
   }
+
   changeColor = () => {
     this.setState({
       action: "Dont click",
       color: "blue",
       brand: "BMW",
       owners: ["You"],
+      display: "none",
     });
   };
-  // thisUndefined(){ alert(this) };
-  // thisObject=()=>{ alert(this) };
-  render() {
-    const man = { name: "Bill", height: 145 };
 
+  render() {
+    // const man = { name: "Bill", height: 145 };
     return (
       <div className="main">
         <div>
           <ToDoList />
-          <h5 onClick={this.changeColor}>
+          <h5 style={{ color: this.state.color }} onClick={this.changeColor}>
             {this.state.action} this {this.state.color} {this.state.brand} owned
             by {this.state.owners[0]}!
           </h5>
           <Async />
+          <Accordion />
         </div>
       </div>
     );
