@@ -27,22 +27,24 @@ class Async extends React.Component {
     super(props);
     this.state = [
       {
-        title:"Callbacks",
-        text:"A callback is a function passed as an argument to another function. It can run after another function has finished. Where callbacks really shine are in async functions.",
+        title: "Callbacks",
+        text: "A callback is a function passed as an argument to another function. It can run after another function has finished. Where callbacks really shine are in async functions.",
         code: `
         const show = sum => document.getElementById("demo").innerHTML = sum;
         const calc = (n1, n2, show) => show(n1 + n2) 
         calc(8,3, show); // Calc & then show the result.
-        //------ "show" is a callback function here`
-      },{
-        title:"Asynchronous",
-        text:"Functions (show) running in parallel with other functions (setTimeout()) are called asynchronous = one function has to wait for another function (like waiting for a file to load, timeout or interval) Click here and wait 3 seconds!",
+        //------ "show" is a callback function here`,
+      },
+      {
+        title: "Asynchronous",
+        text: "Functions (show) running in parallel with other functions (setTimeout()) are called asynchronous = one function has to wait for another function (like waiting for a file to load, timeout or interval) Click here and wait 3 seconds!",
         code: `
         setTimeout(show, 3000); // Async function here  
-        const show = () => document.getElementById("demo").innerHTML = "I Love You!";`
-      },{
-        title:"Promises",
-        text:"'Producing code' can take some time. 'Consuming code' must wait for the result. A Promise is an object that links producing code and consuming code.",
+        const show = () => document.getElementById("demo").innerHTML = "I Love You!";`,
+      },
+      {
+        title: "Promises",
+        text: "'Producing code' can take some time. 'Consuming code' must wait for the result. A Promise is an object that links producing code and consuming code.",
         code: `
         let myPromise = new Promise((resolve, reject) => {
         // "Producing Code" (May take some time)
@@ -56,30 +58,62 @@ class Async extends React.Component {
           function(value) { /* code if successful */ },
           function(error) { /* code if some error */ }
         );`,
-        howTo: `
-        myPromise.then(
-          function(value) { /* code if successful */ },
-          function(error) { /* code if some error */ }
-        );
-        `,
       },
-
-
-      
-      ];
+      {
+        title: "Prom Obj Props",
+        text: (
+          <div>
+            <div>A JavaScript Promise object can be:</div>
+            <ol>
+              <li>Pending</li>
+              <li>Fulfilled</li>
+              <li>Rejected</li>
+            </ol>
+            <p>
+              The Promise object supports two properties: <b>state</b> and <b>result</b>.
+              <br/>While a Promise object is 'pending' (working), the result is undefined. 
+              <br/>When a Promise object is 'fulfilled', the result is a value. 
+              <br/>When a Promise object is 'rejected', the result is an error object."
+            </p>
+          </div>
+        ),
+        table: (
+          <table>
+            <tbody>
+              <tr>
+                <th>myPromise.state</th>
+                <th>myPromise.result</th>
+              </tr>
+              <tr>
+                <td>"pending"</td>
+                <td>undefined</td>
+              </tr>
+              <tr>
+                <td>"fulfilled"</td>
+                <td>a result value</td>
+              </tr>
+              <tr>
+                <td>"rejected"</td>
+                <td>an error object</td>
+              </tr>
+            </tbody>
+          </table>
+        ),
+      },
+    ];
   }
-
-  asyncFunc = (props) => {
-    setTimeout(() => {
-      alert("I love you baby!");
-    }, 3000); // Async function here
-  };
 
   render() {
     return (
       <div className="main">
         <div className="width_600">
-          <h2>Asyncronous JS (Event Loop)</h2>
+          <h2
+            onClick={() =>
+              setTimeout(() => alert("This is asynchronous js baby!"), 3000)
+            }
+          >
+            Core JS (click & wait 3s)
+          </h2>
           {/* CALLBACKS ----------------------------------------- */}
           <Accordion
             title={this.state[0].title}
@@ -95,53 +129,19 @@ class Async extends React.Component {
           />
 
           {/* PROMISES ----------------------------------------- */}
+          <Accordion
+            title={this.state[2].title}
+            text={this.state[2].text}
+            code={this.state[2].code}
+          />
+
+          <Accordion
+            title={this.state[3].title}
+            text={this.state[3].text}
+            table={this.state[3].table}
+          />
+
           <div className="promise">
-            <h4>JS Promises</h4>
-            <p>
-              "Producing code" can take some time. "Consuming code" must wait
-              for the result. A Promise is an object that links producing code
-              and consuming code.
-            </p>
-            {/* <pre>{this.state.promise}</pre> */}
-            <div>
-              <h4>Promise Object Properties</h4>
-              <p>A JavaScript Promise object can be:</p>
-              <ul>
-                <li>Pending</li>
-                <li>Fulfilled</li>
-                <li>Rejected</li>
-              </ul>
-              <p>
-                The Promise object supports two properties: <b>state</b> and{" "}
-                <b>result</b>.
-                <br /> While a Promise object is "pending" (working), the result
-                is undefined.
-                <br /> When a Promise object is "fulfilled", the result is a
-                value.
-                <br /> When a Promise object is "rejected", the result is an
-                error object.
-              </p>
-            </div>
-            <table>
-              <tbody>
-                <tr>
-                  <th>myPromise.state</th>
-                  <th>myPromise.result</th>
-                </tr>
-                <tr>
-                  <td>"pending"</td>
-                  <td>undefined</td>
-                </tr>
-                <tr>
-                  <td>"fulfilled"</td>
-                  <td>a result value</td>
-                </tr>
-                <tr>
-                  <td>"rejected"</td>
-                  <td>an error object</td>
-                </tr>
-              </tbody>
-            </table>
             <div className="note">
               <p>
                 You cannot access the Promise properties <b>state</b> and{" "}
@@ -200,7 +200,8 @@ class Accordion extends React.Component {
 
         {show && (
           <div className="panel">
-            <p>{this.props.text}</p>
+            <div className="p">{this.props.text}</div>
+            <div>{this.props.table}</div>
             <pre>{this.props.code}</pre>
           </div>
         )}
