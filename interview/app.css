@@ -3,13 +3,17 @@ body {
   /* background: #f1f1f1; */
   color: rgb(40,44,52);
 }
+
 .main{
   display: flex;
   justify-content: center;
 }
+
 pre {
   background: rgb(40,44,52);;
   color: white;
+  overflow: scroll;
+  margin: 0;
 }
 
 .accordion {
@@ -17,10 +21,6 @@ pre {
   color: #444;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
   font-size: 15px;
   transition: 0.4s;
 }
@@ -32,7 +32,6 @@ pre {
 .accordion:after {
   content: '\02795'; 
   /* Unicode for "plus" sign (+) */
-  font-size: 13px;
   color: #777;
   float: right;
   margin-left: 5px;
@@ -44,20 +43,18 @@ pre {
 }
 
 .panel {
-  padding: 0 18px;
-  background-color: white;
-  /* overflow: hidden; */
+  /* background-color: white; */
   transition: max-height 0.2s ease-out;
+  border: 1px solid silver;
 }
 
 p{
   /* background-color: #ffffcc; */
-  background-color: #f1f1f1;
-  margin-top: 20px;
+  margin: 0;
   padding: 10px 30px;
 }
 
-.width_600{ width: 600px; }
+.width_600{ width: 70%; }
 
 table {
   font-family: arial, sans-serif;
