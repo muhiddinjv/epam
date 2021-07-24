@@ -2,12 +2,11 @@ body {
   font-family: sans-serif;
   /* background: #f1f1f1; */
   color: rgb(40,44,52);
+  margin: 0;
+  padding:0;
 }
 
-.main{
-  display: flex;
-  justify-content: center;
-}
+.main{display: flex; justify-content: center;}
 
 pre {
   background: rgb(40,44,52);
@@ -44,8 +43,7 @@ pre {
 }
 
 .panel {
-  /* background-color: white; */
-  transition: max-height 0.2s ease-out;
+  /* transition: max-height 0.2s ease-out; */
   border: 1px solid silver;
 }
 
@@ -55,7 +53,7 @@ pre {
   padding: 10px 30px;
 }
 
-.width_600{ width: 70%; }
+.width70pr { width: 70%; }
 
 table {
   font-family: arial, sans-serif;
