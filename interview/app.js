@@ -91,7 +91,7 @@ class Core extends React.Component {
           const show = sum => document.getElementById("demo").innerHTML = sum;
 
           let myPromise = new Promise((resolve, reject) => {
-            let x = 0; // some code (try to change x to 5)
+            let x = 0; // try to change x to 5
             x == 0 ? resolve("OK") : reject("Error");
           });
 
@@ -164,23 +164,9 @@ class Core extends React.Component {
     };
   }
 
-  // accordionLoop() {
-  //   let arr = [];
-  //   for (var i = 0; i < 6; i++) {
-  //     arr.push(
-  //       <Accordion
-  //         title={this.state.values[i].title}
-  //         text={this.state.values[i].text}
-  //         code={this.state.values[i].code}
-  //       />
-  //     );
-  //   }
-  //   return arr;
-  // }
-
   render() {
     return (
-      <div className="main">
+      <div className="main accor-wrapper">
         <div className="width70pr">
           <h2 onClick={() => setTimeout(() => alert("This is asynchronous js baby!"), 3000)}>
             Core JS (click & wait 3s)

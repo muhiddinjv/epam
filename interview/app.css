@@ -9,7 +9,10 @@ body {
 .main{
   display: flex; 
   justify-content: center;
-  padding-bottom: 50px;
+}
+
+.accor-wrapper{
+  margin-bottom: 50px;
 }
 
 pre {
