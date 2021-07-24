@@ -16,6 +16,7 @@ const ToDoList = () => {
           <li>OOP: SOLID principles</li>
           <li>CI/CD</li>
         </ol>
+        <ChangeText />
       </div>
     </div>
   );
@@ -57,6 +58,22 @@ class Async extends React.Component {
         myPromise.then(
           function(value) { /* code if successful */ },
           function(error) { /* code if some error */ }
+        );`,
+      },
+      {
+        title: "Promise HowTo",
+        text: "Promise.then() takes two (optional) arguments, a callback for success and another for failure. You can add a callback forsuccess or failure only",
+        code: `
+        const show = sum => document.getElementById("demo").innerHTML = sum;
+
+        let myPromise = new Promise((resolve, reject) => {
+          let x = 0; // some code (try to change x to 5)
+          x == 0 ? resolve("OK") : reject("Error");
+        });
+
+        myPromise.then(
+          (value) => {show(value)},
+          (error) => {show(error)}
         );`,
       },
       {
@@ -105,26 +122,16 @@ class Async extends React.Component {
             </tbody>
           </table>
         ),
-      },{
-        title: "Promise HowTo",
-        text: "Promise.then() takes two (optional) arguments, a callback for success and another for failure. You can add a callback forsuccess or failure only",
-        code: `
-        const show = sum => document.getElementById("demo").innerHTML = sum;
-
-        let myPromise = new Promise((resolve, reject) => {
-          let x = 0; // some code (try to change x to 5)
-          x == 0 ? resolve("OK") : reject("Error");
-        });
-
-        myPromise.then(
-          (value) => {show(value)},
-          (error) => {show(error)}
-        );`,
-      },{
+      },
+      {
         title: "Async (A)wait",
-        text: (<p>Async and await make promises easier to write! 
-        <b> 1-Async</b> makes a function return a Promise.  
-        <b> 2-Await</b> makes a function wait for a Promise.</p>),
+        text: (
+          <p>
+            Async and await make promises easier to write!
+            <b> 1-Async</b> makes a function return a Promise.
+            <b> 2-Await</b> makes a function wait for a Promise.
+          </p>
+        ),
         code: `
         async function show() {
           let myPromise = new Promise((resolve, reject) => {
@@ -137,10 +144,23 @@ class Async extends React.Component {
     ];
   }
 
+  accordionLoop = () => {
+    let arr = [];
+    for (var i = 0; i < 4; i++) {
+      arr.push(<Accordion
+        title={this.state[i].title}
+        text={this.state[i].text}
+        code={this.state[i].code}
+      />)
+    }
+    return arr;
+  }
+  
   render() {
     return (
       <div className="main">
         <div className="width70pr">
+        {this.accordionLoop()}
           <h2
             onClick={() =>
               setTimeout(() => alert("This is asynchronous js baby!"), 3000)
@@ -169,26 +189,26 @@ class Async extends React.Component {
             code={this.state[2].code}
           />
 
-          {/* PROMISES-OBJ-PROPS ------------------------------------ */}
+          {/* PROMISES-HowTo ------------------------------------ */}
           <Accordion
             title={this.state[3].title}
             text={this.state[3].text}
-            table={this.state[3].table}
+            code={this.state[3].code}
           />
 
-          {/* PROMISES-HowTo ------------------------------------ */}
+          {/* PROMISES-OBJ-PROPS ------------------------------------ */}
           <Accordion
             title={this.state[4].title}
             text={this.state[4].text}
-            code={this.state[4].code}
+            table={this.state[4].table}
           />
 
-          {/* PROMISES-HowTo ------------------------------------ */}
+          {/* ASYNCH AWAIT ------------------------------------ */}
           <Accordion
             title={this.state[5].title}
             text={this.state[5].text}
             code={this.state[5].code}
-          />        
+          />
         </div>
       </div>
     );
@@ -225,8 +245,8 @@ class Accordion extends React.Component {
   }
 }
 
-// COMPONENT APP ------------------------------
-class App extends React.Component {
+// CHANGETEXT ------------------------------
+class ChangeText extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -254,15 +274,23 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <ToDoList />
           <h5 style={{ color: this.state.color }} onClick={this.changeValue}>
             {this.state.action} this {this.state.color} {this.state.brand} owned
             by {this.state.owners[0]}!
           </h5>
-          <Async />
         </div>
       </div>
     );
   }
 }
+
+// CHANGETEXT ------------------------------
+const App = () => {
+  return (
+    <div>
+      <ToDoList />
+      <Async />
+    </div>
+  );
+};
 ReactDOM.render(<App />, document.querySelector("#root"));
