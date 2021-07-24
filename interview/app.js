@@ -107,12 +107,9 @@ class Core extends React.Component {
             <div>
               <div>A JavaScript Promise object can be:</div>
               <ol>
-                {/* {["Pending","Fulfilled","Rejected"].map(item=>
-                  <li key={item.id}>{item}</li>
-                )} */}
-                <li key={this.id}>Pending</li>
-                <li key={this.id}>Fulfilled</li>
-                <li key={this.id}>Rejected</li>
+                <li>Pending</li>
+                <li>Fulfilled</li>
+                <li>Rejected</li>
               </ol>
               <p>
                 The Promise object supports two properties: <b>state</b> and{" "}
@@ -172,7 +169,6 @@ class Core extends React.Component {
             Core JS (click & wait 3s)
           </h2>
           
-          {/* {this.accordionLoop()} */}
           {this.state.values.map((i)=>{
             return <Accordion 
               key={i.key}
