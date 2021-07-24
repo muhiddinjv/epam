@@ -22,193 +22,180 @@ const ToDoList = () => {
   );
 };
 
-// COMPONENT 2 ------------------------------
-class Async extends React.Component {
+// CORE JS ------------------------------
+class Core extends React.Component {
   constructor(props) {
     super(props);
-    this.state = [
-      {
-        title: "Callbacks",
-        text: "A callback is a function passed as an argument to another function. It can run after another function has finished. Where callbacks really shine are in async functions.",
-        code: `
-        const show = sum => document.getElementById("demo").innerHTML = sum;
-        const calc = (n1, n2, show) => show(n1 + n2) 
-        calc(8,3, show); // Calc & then show the result.
-        //------ "show" is a callback function here`,
-      },
-      {
-        title: "Asynchronous",
-        text: "Functions (show) running in parallel with other functions (setTimeout()) are called asynchronous = one function has to wait for another function (like waiting for a file to load, timeout or interval) Click here and wait 3 seconds!",
-        code: `
-        setTimeout(show, 3000); // Async function here  
-        const show = () => document.getElementById("demo").innerHTML = "I Love You!";`,
-      },
-      {
-        title: "Promises",
-        text: "'Producing code' can take some time. 'Consuming code' must wait for the result. A Promise is an object that links producing code and consuming code.",
-        code: `
-        let myPromise = new Promise((resolve, reject) => {
-        // "Producing Code" (May take some time)
-        
-          resolve(); // when successful
-          reject();  // when error
-        });
-        
-        // "Consuming Code" (Must wait for a fulfilled Promise)
-        myPromise.then(
-          function(value) { /* code if successful */ },
-          function(error) { /* code if some error */ }
-        );`,
-      },
-      {
-        title: "Promise HowTo",
-        text: "Promise.then() takes two (optional) arguments, a callback for success and another for failure. You can add a callback forsuccess or failure only",
-        code: `
-        const show = sum => document.getElementById("demo").innerHTML = sum;
-
-        let myPromise = new Promise((resolve, reject) => {
-          let x = 0; // some code (try to change x to 5)
-          x == 0 ? resolve("OK") : reject("Error");
-        });
-
-        myPromise.then(
-          (value) => {show(value)},
-          (error) => {show(error)}
-        );`,
-      },
-      {
-        title: "Prom Obj Props",
-        text: (
-          <div>
-            <div>A JavaScript Promise object can be:</div>
-            <ol>
-              <li>Pending</li>
-              <li>Fulfilled</li>
-              <li>Rejected</li>
-            </ol>
+    this.state = {
+      values: [
+        {
+          key: 0,
+          title: "Callbacks",
+          text: "A callback is a function passed as an argument to another function. It can run after another function has finished. Where callbacks really shine are in async functions.",
+          code: `
+          const show = sum => document.getElementById("demo").innerHTML = sum;
+          const calc = (n1, n2, show) => show(n1 + n2) 
+          calc(8,3, show); // Calc & then show the result.
+          //------ "show" is a callback function here`,
+        },
+        {
+          key: 1,
+          title: "Asynchronous",
+          text: "Functions (show) running in parallel with other functions (setTimeout()) are called asynchronous = one function has to wait for another function (like waiting for a file to load, timeout or interval) Click here and wait 3 seconds!",
+          code: `
+          setTimeout(show, 3000); // Async function here  
+          const show = () => document.getElementById("demo").innerHTML = "I Love You!";`,
+        },
+        {
+          key: 2,
+          title: "Async (A)wait",
+          text: (
             <p>
-              The Promise object supports two properties: <b>state</b> and{" "}
-              <b>result</b>.
-              <br />
-              While a Promise object is 'pending' (working), the result is
-              undefined.
-              <br />
-              When a Promise object is 'fulfilled', the result is a value.
-              <br />
-              When a Promise object is 'rejected', the result is an error
-              object."
+              Async and await make promises easier to write!
+              <b> 1-Async</b> makes a function return a Promise.
+              <b> 2-Await</b> makes a function wait for a Promise.
             </p>
-          </div>
-        ),
-        table: (
-          <table>
-            <tbody>
-              <tr>
-                <th>myPromise.state</th>
-                <th>myPromise.result</th>
-              </tr>
-              <tr>
-                <td>"pending"</td>
-                <td>undefined</td>
-              </tr>
-              <tr>
-                <td>"fulfilled"</td>
-                <td>a result value</td>
-              </tr>
-              <tr>
-                <td>"rejected"</td>
-                <td>an error object</td>
-              </tr>
-            </tbody>
-          </table>
-        ),
-      },
-      {
-        title: "Async (A)wait",
-        text: (
-          <p>
-            Async and await make promises easier to write!
-            <b> 1-Async</b> makes a function return a Promise.
-            <b> 2-Await</b> makes a function wait for a Promise.
-          </p>
-        ),
-        code: `
-        async function show() {
+          ),
+          code: `
+          async function show() {
+            let myPromise = new Promise((resolve, reject) => {
+              setTimeout(() => { resolve("I love You !!"); }, 3000);
+            });
+            document.getElementById("demo").innerHTML = await myPromise;
+          }
+          show();`,
+        },
+        {
+          key: 3,
+          title: "Promises",
+          text: "'Producing code' can take some time. 'Consuming code' must wait for the result. A Promise is an object that links producing code and consuming code.",
+          code: `
           let myPromise = new Promise((resolve, reject) => {
-            setTimeout(() => { resolve("I love You !!"); }, 3000);
+          // "Producing Code" (May take some time)
+          
+            resolve(); // when successful
+            reject();  // when error
           });
-          document.getElementById("demo").innerHTML = await myPromise;
-        }
-        show();`,
-      },
-    ];
+          
+          // "Consuming Code" (Must wait for a fulfilled Promise)
+          myPromise.then(
+            (value) => { /* code if successful */ },
+            (error) => { /* code if some error */ }
+          );`,
+        },
+        {
+          key: 4,
+          title: "Promise HowTo",
+          text: "Promise.then() takes two (optional) arguments, a callback for success and another for failure. You can add a callback forsuccess or failure only",
+          code: `
+          const show = sum => document.getElementById("demo").innerHTML = sum;
+
+          let myPromise = new Promise((resolve, reject) => {
+            let x = 0; // some code (try to change x to 5)
+            x == 0 ? resolve("OK") : reject("Error");
+          });
+
+          myPromise.then(
+            (value) => {show(value)},
+            (error) => {show(error)}
+          );`,
+        },
+        {
+          key: 5,
+          title: "Prom Obj Props",
+          text: (
+            <div>
+              <div>A JavaScript Promise object can be:</div>
+              <ol>
+                {/* {["Pending","Fulfilled","Rejected"].map(item=>
+                  <li key={item.id}>{item}</li>
+                )} */}
+                <li key={this.id}>Pending</li>
+                <li key={this.id}>Fulfilled</li>
+                <li key={this.id}>Rejected</li>
+              </ol>
+              <p>
+                The Promise object supports two properties: <b>state</b> and{" "}
+                <b>result</b>.
+                <br />
+                While a Promise object is 'pending' (working), the result is
+                undefined.
+                <br />
+                When a Promise object is 'fulfilled', the result is a value.
+                <br />
+                When a Promise object is 'rejected', the result is an error
+                object."
+              </p>
+              <table>
+                <tbody>
+                  <tr>
+                    <th>myPromise.state</th>
+                    <th>myPromise.result</th>
+                  </tr>
+                  <tr>
+                    <td>"pending"</td>
+                    <td>undefined</td>
+                  </tr>
+                  <tr>
+                    <td>"fulfilled"</td>
+                    <td>a result value</td>
+                  </tr>
+                  <tr>
+                    <td>"rejected"</td>
+                    <td>an error object</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          ),
+          code: `
+          Promise VS Callback
+
+          1) Callback: setTimeout(() => { myFunction("I love You !!!"); }, 3000);
+          const myFunction = value => document.getElementById("demo").innerHTML = value;
+
+          2) Promise: let myPromise = new Promise((resolve, reject) => {
+            setTimeout(() => { myResolve("I love You !!"); }, 3000);
+          });
+          myPromise.then((value) => document.getElementById("demo").innerHTML = value;)
+          `,
+        },
+      ],
+    };
   }
 
-  accordionLoop = () => {
-    let arr = [];
-    for (var i = 0; i < 4; i++) {
-      arr.push(<Accordion
-        title={this.state[i].title}
-        text={this.state[i].text}
-        code={this.state[i].code}
-      />)
-    }
-    return arr;
-  }
-  
+  // accordionLoop() {
+  //   let arr = [];
+  //   for (var i = 0; i < 6; i++) {
+  //     arr.push(
+  //       <Accordion
+  //         title={this.state.values[i].title}
+  //         text={this.state.values[i].text}
+  //         code={this.state.values[i].code}
+  //       />
+  //     );
+  //   }
+  //   return arr;
+  // }
+
   render() {
     return (
       <div className="main">
         <div className="width70pr">
-        {this.accordionLoop()}
-          <h2
-            onClick={() =>
-              setTimeout(() => alert("This is asynchronous js baby!"), 3000)
-            }
-          >
+          <h2 onClick={() => setTimeout(() => alert("This is asynchronous js baby!"), 3000)}>
             Core JS (click & wait 3s)
           </h2>
-          {/* CALLBACKS --------------------------------------------- */}
-          <Accordion
-            title={this.state[0].title}
-            text={this.state[0].text}
-            code={this.state[0].code}
-          />
+          
+          {/* {this.accordionLoop()} */}
+          {this.state.values.map((i)=>{
+            return <Accordion 
+              key={i.key}
+              title={i.title}
+              text={i.text}
+              code={i.code}
+            />
+          })}
 
-          {/* ASYNCHRONOUS ------------------------------------------ */}
-          <Accordion
-            title={this.state[1].title}
-            text={this.state[1].text}
-            code={this.state[1].code}
-          />
-
-          {/* PROMISES ---------------------------------------------- */}
-          <Accordion
-            title={this.state[2].title}
-            text={this.state[2].text}
-            code={this.state[2].code}
-          />
-
-          {/* PROMISES-HowTo ------------------------------------ */}
-          <Accordion
-            title={this.state[3].title}
-            text={this.state[3].text}
-            code={this.state[3].code}
-          />
-
-          {/* PROMISES-OBJ-PROPS ------------------------------------ */}
-          <Accordion
-            title={this.state[4].title}
-            text={this.state[4].text}
-            table={this.state[4].table}
-          />
-
-          {/* ASYNCH AWAIT ------------------------------------ */}
-          <Accordion
-            title={this.state[5].title}
-            text={this.state[5].text}
-            code={this.state[5].code}
-          />
         </div>
       </div>
     );
@@ -284,12 +271,12 @@ class ChangeText extends React.Component {
   }
 }
 
-// CHANGETEXT ------------------------------
+// APP ------------------------------
 const App = () => {
   return (
     <div>
       <ToDoList />
-      <Async />
+      <Core />
     </div>
   );
 };
