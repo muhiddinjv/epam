@@ -2,6 +2,32 @@
 
 // COMPONENT 1 ------------------------------
 const ToDoList = () => {
+  const asyncJS = () =>{
+    setTimeout(()=> console.log("done"), 0);
+
+    const start = Date.now();
+    const delay = 10000;
+    const map = new Set();
+    while(Date.now() < start + delay){
+      let diff = Date.now() - start;
+      let sec = Math.trunc(diff / 1000);
+      if(!map.has(sec)){
+        map.add(sec);
+        console.log(`Waiting ${sec} seconds...`)
+      }
+    }
+  }
+  // asyncJS(); 
+  // const task = message => {
+  //   // time consuming task
+  //   let n = 10000000000;
+  //   while (n < 0){n--};
+  //   console.log(message);
+  // };
+  // console.log('Start script...');
+  // task('Download a file.');
+  // console.log('Done!');
+  
   return (
     <div className="main">
       <div>
@@ -30,6 +56,21 @@ class Core extends React.Component {
       values: [
         {
           key: 0,
+          title: "Event Loop",
+          text: "The EL has one simple job - to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the 1st event from the Queue and will push it to the Call Stack which runs it. Such an iteration led to a tick in the EL. Each event is just a function callback",
+          code: `
+          function eventLoop(message) {
+            // emulate time consuming task
+            let n = 10000000000;
+            while (n < 0){n--};
+            console.log(message);
+          };
+          console.log('Start script...');
+          task('Download a file.);
+          console.log('Done!')`,
+        },
+        {
+          key: 1,
           title: "Callbacks",
           text: "A callback is a function passed as an argument to another function. It can run after another function has finished. Where callbacks really shine are in async functions.",
           code: `
@@ -39,7 +80,7 @@ class Core extends React.Component {
           //------ "show" is a callback function here`,
         },
         {
-          key: 1,
+          key: 2,
           title: "Asynchronous",
           text: "Functions (show) running in parallel with other functions (setTimeout()) are called asynchronous = one function has to wait for another function (like waiting for a file to load, timeout or interval) Click here and wait 3 seconds!",
           code: `
@@ -47,7 +88,7 @@ class Core extends React.Component {
           const show = () => document.getElementById("demo").innerHTML = "I Love You!";`,
         },
         {
-          key: 2,
+          key: 3,
           title: "Async (A)wait",
           text: (
             <p>
@@ -66,7 +107,7 @@ class Core extends React.Component {
           show();`,
         },
         {
-          key: 3,
+          key: 4,
           title: "Promises",
           text: "'Producing code' can take some time. 'Consuming code' must wait for the result. A Promise is an object that links producing code and consuming code.",
           code: `
@@ -84,7 +125,7 @@ class Core extends React.Component {
           );`,
         },
         {
-          key: 4,
+          key: 5,
           title: "Promise HowTo",
           text: "Promise.then() takes two (optional) arguments, a callback for success and another for failure. You can add a callback forsuccess or failure only",
           code: `
@@ -101,7 +142,7 @@ class Core extends React.Component {
           );`,
         },
         {
-          key: 5,
+          key: 6,
           title: "Prom Obj Props",
           text: (
             <div>
@@ -152,7 +193,7 @@ class Core extends React.Component {
           const myFunction = value => document.getElementById("demo").innerHTML = value;
 
           2) Promise: let myPromise = new Promise((resolve, reject) => {
-            setTimeout(() => { myResolve("I love You !!"); }, 3000);
+            setTimeout(() => { resolve("I love You !!"); }, 3000);
           });
           myPromise.then((value) => document.getElementById("demo").innerHTML = value;)
           `,
