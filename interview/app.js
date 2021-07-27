@@ -4,13 +4,15 @@
 const ToDoList = () => {
   const asyncJS = () =>{
     setTimeout(()=> console.log("done"), 0);
-
+    
     const start = Date.now();
     const delay = 10000;
     const map = new Set();
+
     while(Date.now() < start + delay){
       let diff = Date.now() - start;
       let sec = Math.trunc(diff / 1000);
+      
       if(!map.has(sec)){
         map.add(sec);
         console.log(`Waiting ${sec} seconds...`)
@@ -18,16 +20,44 @@ const ToDoList = () => {
     }
   }
   // asyncJS(); 
-  // const task = message => {
-  //   // time consuming task
-  //   let n = 10000000000;
-  //   while (n < 0){n--};
-  //   console.log(message);
-  // };
-  // console.log('Start script...');
-  // task('Download a file.');
-  // console.log('Done!');
-  
+  const task = message => {
+    // time consuming task
+    let n = 10000000000000;
+    while (n < 0){n--};
+    console.log(message);
+  };
+  console.log('Start script...');
+  task('Download a file.');
+  console.log('Done!');
+
+  // Interview Task starts-------------------------------
+  const angle = hour => {
+    const hourAngle = 360; //Earth spins 360deg;
+    const hours = 24; // 24 hours a day
+    return hours * hourAngle;
+  }
+  console.log(angle(6)); //0
+  console.log(angle(12)); //90
+  console.log(angle(18)); //180
+  const model = { 
+    background: "red",
+    width: "100px",
+    height: "100px",
+   };
+
+   const overlay = { 
+    position:"fixed",
+    top:"0",
+    left:"0",
+    width:'100%',
+    height:'100%',
+    background: "lightgreen",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+   };
+  // Interview Task ends-------------------------------
+
   return (
     <div className="main">
       <div>
@@ -44,6 +74,9 @@ const ToDoList = () => {
         </ol>
         <ChangeText />
       </div>
+      <div style={overlay}>
+        <div style={model}></div>
+      </div>
     </div>
   );
 };
@@ -57,11 +90,11 @@ class Core extends React.Component {
         {
           key: 0,
           title: "Event Loop",
-          text: "The EL has one simple job - to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the 1st event from the Queue and will push it to the Call Stack which runs it. Such an iteration led to a tick in the EL. Each event is just a function callback",
+          text: "The EL has one simple job - to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the 1st event from the Queue and will push it to the Call Stack which runs it. Each event is just a function callback. But ff you have a function that takes a long time to execute (aka Blocking function), then you cannot do anything on the web browser during the function’s execution. The webpage just hangs",
           code: `
           function eventLoop(message) {
             // emulate time consuming task
-            let n = 10000000000;
+            let n = 100000000000000000000;
             while (n < 0){n--};
             console.log(message);
           };
@@ -250,6 +283,7 @@ class Accordion extends React.Component {
             <pre>{this.props.code}</pre>
           </div>
         )}
+        
       </div>
     );
   }
