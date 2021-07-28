@@ -31,31 +31,31 @@ const ToDoList = () => {
   console.log('Done!');
 
   // Interview Task starts-------------------------------
-  const angle = hour => {
-    const hourAngle = 360; //Earth spins 360deg;
-    const hours = 24; // 24 hours a day
-    return hours * hourAngle;
-  }
-  console.log(angle(6)); //0
-  console.log(angle(12)); //90
-  console.log(angle(18)); //180
-  const model = { 
-    background: "red",
-    width: "100px",
-    height: "100px",
-   };
+  // const angle = hour => {
+  //   const hourAngle = 360; //Earth spins 360deg;
+  //   const hours = 24; // 24 hours a day
+  //   return hours * hourAngle;
+  // }
+  // console.log(angle(6)); //0
+  // console.log(angle(12)); //90
+  // console.log(angle(18)); //180
+  // const model = { 
+  //   background: "red",
+  //   width: "100px",
+  //   height: "100px",
+  //  };
 
-   const overlay = { 
-    position:"fixed",
-    top:"0",
-    left:"0",
-    width:'100%',
-    height:'100%',
-    background: "lightgreen",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-   };
+  //  const overlay = { 
+  //   position:"fixed",
+  //   top:"0",
+  //   left:"0",
+  //   width:'100%',
+  //   height:'100%',
+  //   background: "lightgreen",
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //  };
   // Interview Task ends-------------------------------
 
   return (
@@ -74,9 +74,9 @@ const ToDoList = () => {
         </ol>
         <ChangeText />
       </div>
-      <div style={overlay}>
+      {/* <div style={overlay}>
         <div style={model}></div>
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -100,7 +100,26 @@ class Core extends React.Component {
           };
           console.log('Start script...');
           task('Download a file.);
-          console.log('Done!')`,
+          console.log('Done!')
+
+          const asyncJS = () =>{
+            setTimeout(()=> console.log("done"), 0);
+            
+            const start = Date.now();
+            const delay = 10000;
+            const map = new Set();
+        
+            while(Date.now() < start + delay){
+              let diff = Date.now() - start;
+              let sec = Math.trunc(diff / 1000);
+              
+              if(!map.has(sec)){
+                map.add(sec);
+                console.log('Waiting ${'sec'} seconds...')
+              }
+            }
+          }
+          asyncJS();`,
         },
         {
           key: 1,
