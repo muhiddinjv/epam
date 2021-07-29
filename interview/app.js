@@ -132,11 +132,16 @@ class Core extends React.Component {
         },
         {
           key: 1,
-          title: "Callbacks",
+          title: "Callback vs Promise",
           text: (
             <div>
               <p>"A callback (CB) is a function passed as an argument to another function. It can run after another function has finished. Where callbacks really shine are in async functions."</p>
             <h5>Pros:</h5>
+            <ul>
+              <li>simple: CBs are manageable if there is one source of asynchronism</li>
+              <li>good choice: stream of events / DOM events (when CBs are called multiple times</li>
+            </ul>
+            <h5>Const: Pyramid of Doom</h5>
             <ul>
               <li>simple: CBs are manageable if there is one source of asynchronism</li>
               <li>good choice: stream of events / DOM events (when CBs are called multiple times</li>
@@ -150,7 +155,7 @@ class Core extends React.Component {
           calc(8,3, show); // Calc & then show the result.
           //------ "show" is a callback function here
           
-          Callback Hell ------------------------------------
+          Pyramid of Doom -----------------------------------
           getData(function(a){
             getMoreData(a, function(b){
               getMoreData(b, function(c){
