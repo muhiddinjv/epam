@@ -2,6 +2,7 @@
 
 // COMPONENT 1 ------------------------------
 const ToDoList = () => {
+
   const asyncJS = () =>{
     setTimeout(()=> console.log("done"), 0);
     
@@ -20,6 +21,7 @@ const ToDoList = () => {
     }
   }
   // asyncJS(); 
+
   const task = message => {
     // time consuming task
     let n = 10000000000000;
@@ -36,9 +38,14 @@ const ToDoList = () => {
   //   const hours = 24; // 24 hours a day
   //   return hours * hourAngle;
   // }
+  // const angle = hour => {
+    //   const hourAngle = 270 / 18;
+    //   return hour * hourAngle - 90;
+    // }
   // console.log(angle(6)); //0
   // console.log(angle(12)); //90
   // console.log(angle(18)); //180
+
   // const model = { 
   //   background: "red",
   //   width: "100px",
@@ -81,7 +88,7 @@ const ToDoList = () => {
   );
 };
 
-// CORE JS ------------------------------
+// CORE JS COMPONENT 2 ------------------------------
 class Core extends React.Component {
   constructor(props) {
     super(props);
@@ -92,16 +99,18 @@ class Core extends React.Component {
           title: "Event Loop",
           text: "The EL has one simple job - to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the 1st event from the Queue and will push it to the Call Stack which runs it. Each event is just a function callback. But ff you have a function that takes a long time to execute (aka Blocking function), then you cannot do anything on the web browser during the function’s execution. The webpage just hangs",
           code: `
-          function eventLoop(message) {
-            // emulate time consuming task
-            let n = 100000000000000000000;
-            while (n < 0){n--};
-            console.log(message);
-          };
-          console.log('Start script...');
-          task('Download a file.);
-          console.log('Done!')
+          SUPER SIMPLE EXAMPLE ------------------------
+          // say "Hello"
+          console.log("Hello");
 
+          // say "Goodbye" after 2 sec
+          setTimeout(()=> console.log("Goodbye!"), 2000);
+
+          // Say "Hello again!"
+          console.log("Hello again");
+
+
+          SUPER HARD EXAMPLE --------------------------
           const asyncJS = () =>{
             setTimeout(()=> console.log("done"), 0);
             
@@ -277,7 +286,7 @@ class Core extends React.Component {
   }
 }
 
-// ACCORDION ----------------------------------
+// ACCORDION COMPONENT 3----------------------------------
 class Accordion extends React.Component {
   constructor(props) {
     super(props);
