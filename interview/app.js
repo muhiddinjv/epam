@@ -132,14 +132,14 @@ class Core extends React.Component {
         },
         {
           key: 1,
-          title: "Callback vs Promise",
+          title: "Callback",
           text: (
             <div>
               <p>"A callback (CB) is a function passed as an argument to another function. It can run after another function has finished. Where callbacks really shine are in async functions."</p>
-            <h5>Pros:</h5>
+            <h5>Pros: Manageable</h5>
             <ul>
               <li>simple: CBs are manageable if there is one source of asynchronism</li>
-              <li>good choice: stream of events / DOM events (when CBs are called multiple times</li>
+              <li>good choice: stream of events / DOM events (when CBs are called multiple times)</li>
             </ul>
             <h5>Const: Pyramid of Doom</h5>
             <ul>
@@ -155,7 +155,7 @@ class Core extends React.Component {
           calc(8,3, show); // Calc & then show the result.
           //------ "show" is a callback function here
           
-          Pyramid of Doom -----------------------------------
+          Callback Hell -----------------------------------
           getData(function(a){
             getMoreData(a, function(b){
               getMoreData(b, function(c){
@@ -178,7 +178,7 @@ class Core extends React.Component {
         },
         {
           key: 3,
-          title: "Async (A)wait",
+          title: "Async Await",
           text: (
             <p>
               Async and await make promises easier to write!
@@ -216,7 +216,7 @@ class Core extends React.Component {
         {
           key: 5,
           title: "Promise HowTo",
-          text: "Promise.then() takes two (optional) arguments, a callback for success and another for failure. You can add a callback forsuccess or failure only",
+          text: "Promise.then() takes two (optional) arguments, a callback for success and another for failure. You can add a callback for success or failure only",
           code: `
           const show = sum => document.getElementById("demo").innerHTML = sum;
 
