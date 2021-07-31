@@ -126,25 +126,44 @@ class FetchJSON extends React.Component {
       return <div>Loading...</div>;
     }else {
       return(
-        <ul>
-          {users.map(user => (
-            <li key={user.id}>
-              {user.name}
-              {user.age}
-            </li>
-          ))}
-        </ul>
+        // <ul className="list-group">
+        //   {users.map(user => (
+        //     <li className="list-group-item" key={user.id}>
+        //       {user.name}
+        //       {user.age}
+        //     </li>
+        //   ))}
+        // </ul>
+        <div>
+        <table className="table table-hover">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+        </div>
       )
     }
-    
-    // fetch("./data.json").then(
-    //   function(res){ return res.json() }
-    // ).then(function(data){
-    //   this.setState({data: this.state.data = data});
-    // }).catch(
-    //   function(err){console.log(err, ' error')}
-    // )
-
   }
 }
 
@@ -346,7 +365,23 @@ class Core extends React.Component {
           });
           myPromise.then((value) => document.getElementById("demo").innerHTML = value;)
           `,
-        },
+        },{
+          key: 7,
+          title: "CB, Prom, Async",
+          text: (
+            <div>
+              <FetchJSON />
+            </div>
+          ),
+          code: `
+          async function show() {
+            let myPromise = new Promise((resolve, reject) => {
+              setTimeout(() => { resolve("I love You !!"); }, 3000);
+            });
+            document.getElementById("demo").innerHTML = await myPromise;
+          }
+          show();`,
+        }
       ],
     };
   }
@@ -449,7 +484,6 @@ const App = () => {
   return (
     <div>
       <ToDoList />
-      <FetchJSON />
       <Core />
     </div>
   );

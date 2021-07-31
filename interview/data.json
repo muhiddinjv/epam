@@ -12,6 +12,12 @@
             "occupation": "Surgeon",
             "age": 45,
             "country": "United States"
+        },{
+            "id":2,
+            "name": "Muhiddin",
+            "occupation": "Web Developer",
+            "age": 36,
+            "country": "Uzbekistan"
         }
     ]
 }
