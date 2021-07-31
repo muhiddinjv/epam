@@ -2,36 +2,6 @@
 
 // COMPONENT 1 ------------------------------
 const ToDoList = () => {
-
-  const asyncJS = () =>{
-    setTimeout(()=> console.log("done"), 0);
-    
-    const start = Date.now();
-    const delay = 10000;
-    const map = new Set();
-
-    while(Date.now() < start + delay){
-      let diff = Date.now() - start;
-      let sec = Math.trunc(diff / 1000);
-      
-      if(!map.has(sec)){
-        map.add(sec);
-        console.log(`Waiting ${sec} seconds...`)
-      }
-    }
-  }
-  // asyncJS(); 
-
-  const task = message => {
-    // time consuming task
-    let n = 10000000000000;
-    while (n < 0){n--};
-    console.log(message);
-  };
-  console.log('Start script...');
-  task('Download a file.');
-  console.log('Done!');
-
   // Interview Task starts-------------------------------
   // const angle = hour => {
   //   const hourAngle = 360; //Earth spins 360deg;
@@ -39,20 +9,20 @@ const ToDoList = () => {
   //   return hours * hourAngle;
   // }
   // const angle = hour => {
-    //   const hourAngle = 270 / 18;
-    //   return hour * hourAngle - 90;
-    // }
+  //   const hourAngle = 270 / 18;
+  //   return hour * hourAngle - 90;
+  // }
   // console.log(angle(6)); //0
   // console.log(angle(12)); //90
   // console.log(angle(18)); //180
 
-  // const model = { 
+  // const model = {
   //   background: "red",
   //   width: "100px",
   //   height: "100px",
   //  };
 
-  //  const overlay = { 
+  //  const overlay = {
   //   position:"fixed",
   //   top:"0",
   //   left:"0",
@@ -92,83 +62,82 @@ const ToDoList = () => {
 class FetchJSON extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       error: null,
-      isLoaded:false,
-      users: []
-     };
+      isLoaded: false,
+      users: [],
+    };
   }
 
-  componentDidMount(){
-    fetch("./data.json").then(res => res.json())
-    .then(
-      (result)=>{
-        this.setState({
-          isLoaded:true,
-          users: result.users
-        });
-      },
-      (error)=>{
-        this.setState({
-          isLoaded:true,
-          error
-        });
-      }
-    )
+  componentDidMount() {
+    fetch("./data.json")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            users: result.users,
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
   }
-  
 
   render() {
     const { error, isLoaded, users } = this.state;
-    if (error){
+    if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (!isLoaded){
+    } else if (!isLoaded) {
       return <div>Loading...</div>;
-    }else {
-      return(
-        // <ul className="list-group">
-        //   {users.map(user => (
-        //     <li className="list-group-item" key={user.id}>
-        //       {user.name}
-        //       {user.age}
-        //     </li>
-        //   ))}
-        // </ul>
+    } else {
+      return (
         <div>
-        <table className="table table-hover">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Occupation</th>
+                <th>Country</th>
+              </tr>
+            </thead>
+            <tbody>
+            {users.map(user => (
+              <tr key={user.id}>
+                <td>{user.name}</td>
+                <td>{user.age}</td>
+                <td>{user.occupation}</td>
+                <td>{user.country}</td>
+              </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      )
+      );
     }
   }
 }
 
 // CORE JS COMPONENT 2 ------------------------------
 class Core extends React.Component {
+  blocking() {
+    const task = msg => {
+      // time consuming task
+      let n = 100; //change to 10000
+      for(n > 0; n--;) console.log(n + " sec");
+      console.log(msg);
+    };
+    console.log("File downloading...");
+    task("File downloaded");
+    console.log("Task done!");
+  }
+  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -176,7 +145,9 @@ class Core extends React.Component {
         {
           key: 0,
           title: "Event Loop",
-          text: "The EL has one simple job - to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the 1st event from the Queue and will push it to the Call Stack which runs it. Each event is just a function callback. But ff you have a function that takes a long time to execute (aka Blocking function), then you cannot do anything on the web browser during the function’s execution. The webpage just hangs",
+          text: (<p>
+            "The EL has one simple job - to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the 1st event from the Queue and will push it to the Call Stack which runs it. Each event is just a function callback. But ff you have a function that takes a long time to execute (aka <b onClick={this.blocking}>Blocking</b> function), then you cannot do anything on the web browser during the function’s execution. The webpage just hangs"
+          </p>),
           code: `
           SUPER SIMPLE EXAMPLE ------------------------
           // say "Hello"
@@ -203,7 +174,7 @@ class Core extends React.Component {
               
               if(!map.has(sec)){
                 map.add(sec);
-                console.log('Waiting ${'sec'} seconds...')
+                console.log('Waiting ${"sec"} seconds...')
               }
             }
           }
@@ -214,17 +185,33 @@ class Core extends React.Component {
           title: "Callback",
           text: (
             <div>
-              <p>"A callback (CB) is a function passed as an argument to another function. It can run after another function has finished. Where callbacks really shine are in async functions."</p>
-            <h5>Pros: Manageable</h5>
-            <ul>
-              <li>simple: CBs are manageable if there is one source of asynchronism</li>
-              <li>good choice: stream of events / DOM events (when CBs are called multiple times)</li>
-            </ul>
-            <h5>Const: Pyramid of Doom</h5>
-            <ul>
-              <li>simple: CBs are manageable if there is one source of asynchronism</li>
-              <li>good choice: stream of events / DOM events (when CBs are called multiple times</li>
-            </ul>
+              <p>
+                "A callback (CB) is a function passed as an argument to another
+                function. It can run after another function has finished. Where
+                callbacks really shine are in async functions."
+              </p>
+              <h5>Pros: Manageable</h5>
+              <ul>
+                <li>
+                  simple: CBs are manageable if there is one source of
+                  asynchronism
+                </li>
+                <li>
+                  good choice: stream of events / DOM events (when CBs are
+                  called multiple times)
+                </li>
+              </ul>
+              <h5>Const: Pyramid of Doom</h5>
+              <ul>
+                <li>
+                  simple: CBs are manageable if there is one source of
+                  asynchronism
+                </li>
+                <li>
+                  good choice: stream of events / DOM events (when CBs are
+                  called multiple times
+                </li>
+              </ul>
             </div>
           ),
           code: `
@@ -365,12 +352,14 @@ class Core extends React.Component {
           });
           myPromise.then((value) => document.getElementById("demo").innerHTML = value;)
           `,
-        },{
+        },
+        {
           key: 7,
-          title: "CB, Prom, Async",
+          title: "Async in Action",
           text: (
             <div>
               <FetchJSON />
+              <div>hello</div>
             </div>
           ),
           code: `
@@ -381,28 +370,34 @@ class Core extends React.Component {
             document.getElementById("demo").innerHTML = await myPromise;
           }
           show();`,
-        }
+        },
       ],
     };
   }
 
   render() {
+    
     return (
       <div className="main accor-wrapper">
         <div className="width70pr">
-          <h2 onClick={() => setTimeout(() => alert("This is asynchronous js baby!"), 3000)}>
+          <h2
+            onClick={() =>
+              setTimeout(() => alert("This is asynchronous js baby!"), 3000)
+            }
+          >
             Core JS (click & wait 3s)
           </h2>
-          
-          {this.state.values.map((i)=>{
-            return <Accordion 
-              key={i.key}
-              title={i.title}
-              text={i.text}
-              code={i.code}
-            />
-          })}
 
+          {this.state.values.map((i) => {
+            return (
+              <Accordion
+                key={i.key}
+                title={i.title}
+                text={i.text}
+                code={i.code}
+              />
+            );
+          })}
         </div>
       </div>
     );
@@ -434,7 +429,6 @@ class Accordion extends React.Component {
             <pre>{this.props.code}</pre>
           </div>
         )}
-        
       </div>
     );
   }
