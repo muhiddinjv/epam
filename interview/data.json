@@ -1,0 +1,17 @@
+{
+    "users": [
+        {
+            "id":0,
+            "name": "Domenic",
+            "occupation": "Web Developer",
+            "age": 29,
+            "country": "Australia"
+        },{
+            "id":1,
+            "name": "Alice",
+            "occupation": "Surgeon",
+            "age": 45,
+            "country": "United States"
+        }
+    ]
+}

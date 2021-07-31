@@ -88,6 +88,66 @@ const ToDoList = () => {
   );
 };
 
+//FETCH JSON
+class FetchJSON extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      error: null,
+      isLoaded:false,
+      users: []
+     };
+  }
+
+  componentDidMount(){
+    fetch("./data.json").then(res => res.json())
+    .then(
+      (result)=>{
+        this.setState({
+          isLoaded:true,
+          users: result.users
+        });
+      },
+      (error)=>{
+        this.setState({
+          isLoaded:true,
+          error
+        });
+      }
+    )
+  }
+  
+
+  render() {
+    const { error, isLoaded, users } = this.state;
+    if (error){
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded){
+      return <div>Loading...</div>;
+    }else {
+      return(
+        <ul>
+          {users.map(user => (
+            <li key={user.id}>
+              {user.name}
+              {user.age}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    
+    // fetch("./data.json").then(
+    //   function(res){ return res.json() }
+    // ).then(function(data){
+    //   this.setState({data: this.state.data = data});
+    // }).catch(
+    //   function(err){console.log(err, ' error')}
+    // )
+
+  }
+}
+
 // CORE JS COMPONENT 2 ------------------------------
 class Core extends React.Component {
   constructor(props) {
@@ -389,6 +449,7 @@ const App = () => {
   return (
     <div>
       <ToDoList />
+      <FetchJSON />
       <Core />
     </div>
   );
