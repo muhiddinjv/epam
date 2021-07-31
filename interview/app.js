@@ -1,7 +1,4 @@
 "use strict";
-
-// COMPONENT 1 ------------------------------
-const ToDoList = () => {
   // Interview Task starts-------------------------------
   // const angle = hour => {
   //   const hourAngle = 360; //Earth spins 360deg;
@@ -35,6 +32,9 @@ const ToDoList = () => {
   //  };
   // Interview Task ends-------------------------------
 
+// COMPONENT 1 ------------------------------
+const ToDoList = () => {  
+    
   return (
     <div className="main">
       <div>
@@ -51,9 +51,6 @@ const ToDoList = () => {
         </ol>
         <ChangeText />
       </div>
-      {/* <div style={overlay}>
-        <div style={model}></div>
-      </div> */}
     </div>
   );
 };
@@ -125,19 +122,6 @@ class FetchJSON extends React.Component {
 
 // CORE JS COMPONENT 2 ------------------------------
 class Core extends React.Component {
-  blocking() {
-    const task = msg => {
-      // time consuming task
-      let n = 100; //change to 10000
-      for(n > 0; n--;) console.log(n + " sec");
-      console.log(msg);
-    };
-    console.log("File downloading...");
-    task("File downloaded");
-    console.log("Task done!");
-  }
-  
-
   constructor(props) {
     super(props);
     this.state = {
@@ -146,7 +130,7 @@ class Core extends React.Component {
           key: 0,
           title: "Event Loop",
           text: (<p>
-            "The EL has one simple job - to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the 1st event from the Queue and will push it to the Call Stack which runs it. Each event is just a function callback. But ff you have a function that takes a long time to execute (aka <b onClick={this.blocking}>Blocking</b> function), then you cannot do anything on the web browser during the function’s execution. The webpage just hangs"
+            "The EL has one simple job - to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the 1st event from the Queue and will push it to the Call Stack which runs it. Each event is just a function callback. But ff you have a function that takes a long time to execute (aka <b>Blocking</b> function), then you cannot do anything on the web browser during the function’s execution. The webpage just hangs"
           </p>),
           code: `
           SUPER SIMPLE EXAMPLE ------------------------
@@ -358,8 +342,11 @@ class Core extends React.Component {
           title: "Async in Action",
           text: (
             <div>
+              <p>This table is displaying data from a local JSON file!</p>
               <FetchJSON />
-              <div>hello</div>
+              <div>
+              <p onClick={this.blocking}><b>Blocking:</b> 1)Press F12 2)click here 3)try to click something!</p>
+              </div>
             </div>
           ),
           code: `
@@ -374,6 +361,18 @@ class Core extends React.Component {
       ],
     };
   }
+
+  blocking() {
+    const task = msg => {
+      // time consuming task
+      let n = 10000; //change to 10000
+      for(n > 0; n--;) console.log(n + " sec");
+      console.log(msg);
+    };
+    console.log("File downloading...");
+    task("File downloaded!");
+    console.log("Task done!");
+  } 
 
   render() {
     
@@ -403,6 +402,7 @@ class Core extends React.Component {
     );
   }
 }
+
 
 // ACCORDION COMPONENT 3----------------------------------
 class Accordion extends React.Component {
