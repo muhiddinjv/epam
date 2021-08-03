@@ -1,12 +1,13 @@
 body {
   font: 16px Arial;
   text-align: center;
+  color: #333;
 }
-
-/*the container must be positioned relative:*/
+h2 {margin-bottom:5px;}
 .autocomplete {
-  position: relative;
-  display: inline-block;
+  /* position: relative; */
+ margin:0 auto;
+ padding: 5px;
 }
 
 input {
@@ -16,21 +17,6 @@ input {
   padding: 5px;
   font-size: 16px;
 }
-
-input::selection{
-    color: red;
-}
-
-input[type="text"] {
-  background-color: #f1f1f1;
-  width: 100%;
-}
-
-/* input[type="submit"] {
-  background-color: DodgerBlue;
-  color: #fff;
-  cursor: pointer;
-} */
 
 .autocomplete-items {
   position: absolute;
