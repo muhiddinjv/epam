@@ -14,16 +14,29 @@ const searchStates = async (searchText) => {
   });
 
   // if text is deleted, then clear out results
-  if (searchText.length === 0) matches = [];
-
+  if (searchText.length === 0){ 
+    matches = []; 
+    matchList.innerHTML="";
+  };
   outputHtml(matches);
-};
-
-// Show results in HTML
-const outputHtml = (matches) => {
-  console.log(matches)
 };
 
 
 // THE OUTPUT -------------------------------------------
+// Show results in HTML
+const outputHtml = matches => {
+  if(matches.length > 0){
+    const html = matches.map(match=>`
+      <div class="card card-body mt-1">
+        <h4>
+          ${match.name} (${match.abbr}) 
+          <span class="text-primary">${match.capital}</span>
+        </h4>
+        <small>Lat: ${match.lat} / long: ${match.long} </small>
+      </div>
+    `).join('');
+    matchList.innerHTML=html;
+  }
+};
+
 search.addEventListener("input", () => searchStates(search.value));
