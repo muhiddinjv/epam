@@ -125,7 +125,7 @@ class Core extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      values: [
+      notes: [
         {
           key: 0,
           title: "Event Loop",
@@ -144,24 +144,18 @@ class Core extends React.Component {
           console.log("Hello again");
 
 
-          SUPER HARD EXAMPLE --------------------------
-          const asyncJS = () =>{
-            setTimeout(()=> console.log("done"), 0);
-            
-            const start = Date.now();
-            const delay = 10000;
-            const map = new Set();
-        
-            while(Date.now() < start + delay){
-              let diff = Date.now() - start;
-              let sec = Math.trunc(diff / 1000);
-              
-              if(!map.has(sec)){
-                map.add(sec);
-                console.log('Waiting ${"sec"} seconds...')
-              }
-            }
-          }
+          JUST AVERAGE EXAMPLE --------------------------
+          blocking() {
+            const task = msg => {
+              // time consuming task
+              let n = 10000; //change to 1000000
+              for(n > 0; n--;) console.log(n + " sec");
+              console.log(msg);
+            };
+            console.log("File downloading...");
+            task("File downloaded!");
+            console.log("Task done!");
+          } 
           asyncJS();`,
         },
         {
@@ -221,7 +215,7 @@ class Core extends React.Component {
         {
           key: 2,
           title: "Asynchronous",
-          text: "Functions (show) running in parallel with other functions (setTimeout()) are called asynchronous = one function has to wait for another function (like waiting for a file to load, timeout or interval) Click here and wait 3 seconds!",
+          text: "Functions (show) running in parallel with other functions (setTimeout()) are called asynchronous = one function has to wait for another function (like waiting for a file to load, timeout or interval)",
           code: `
           setTimeout(show, 3000); // Async function here  
           const show = () => document.getElementById("demo").innerHTML = "I Love You!";`,
@@ -345,18 +339,22 @@ class Core extends React.Component {
               <p>This table is displaying data from a local JSON file!</p>
               <FetchJSON />
               <div>
-              <p onClick={this.blocking}><b>Blocking:</b> 1)Press F12 2)click here 3)try to click something!</p>
+              <p onClick={this.blocking}><b>Blocking:</b> 1)Press F12 2)click here 3)try to click something else!</p>
               </div>
             </div>
           ),
           code: `
-          async function show() {
-            let myPromise = new Promise((resolve, reject) => {
-              setTimeout(() => { resolve("I love You !!"); }, 3000);
-            });
-            document.getElementById("demo").innerHTML = await myPromise;
-          }
-          show();`,
+          blocking() {
+            const task = msg => {
+              // time consuming task
+              let n = 10000; //change to 1000000
+              for(n > 0; n--;) console.log(n + " sec");
+              console.log(msg);
+            };
+            console.log("File downloading...");
+            task("File downloaded!");
+            console.log("Task done!");
+          } `,
         },
       ],
     };
@@ -365,8 +363,8 @@ class Core extends React.Component {
   blocking() {
     const task = msg => {
       // time consuming task
-      let n = 10000; //change to 10000
-      for(n > 0; n--;) console.log(n + " sec");
+      let n = 10000; //change to 1000000
+      for(n > 0; n--;) console.log(n + " ms");
       console.log(msg);
     };
     console.log("File downloading...");
@@ -387,7 +385,7 @@ class Core extends React.Component {
             Core JS (click & wait 3s)
           </h2>
 
-          {this.state.values.map((i) => {
+          {this.state.notes.map((i) => {
             return (
               <Accordion
                 key={i.key}
