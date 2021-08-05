@@ -130,7 +130,7 @@ class Core extends React.Component {
           key: 0,
           title: "Event Loop",
           text: (<p>
-            "The EL has one simple job - to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the 1st event from the Queue and will push it to the Call Stack which runs it. Each event is just a function callback. But ff you have a function that takes a long time to execute (aka <b>Blocking</b> function), then you cannot do anything on the web browser during the function’s execution. The webpage just hangs"
+            "The EL has one simple job - to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the 1st event from the Queue and will push it to the Call Stack which runs it. Each event is just a function callback. But ff you have a function that takes a long time to execute (aka <b>blocking</b> function), then you cannot do anything on the web browser during the function’s execution. The webpage just hangs"
           </p>),
           code: `
           SUPER SIMPLE EXAMPLE ------------------------
@@ -145,7 +145,7 @@ class Core extends React.Component {
 
 
           JUST AVERAGE EXAMPLE --------------------------
-          blocking() {
+          synchronous() {
             const task = msg => {
               // time consuming task
               let n = 10000; //change to 1000000
@@ -339,12 +339,13 @@ class Core extends React.Component {
               <p>This table is displaying data from a local JSON file!</p>
               <FetchJSON />
               <div>
-              <p onClick={this.blocking}><b>Blocking:</b> 1)Press F12 2)click here 3)try to click something else!</p>
+              <p onClick={this.synchronous}><b>Synchronous:</b> 1)Press F12 2)click here 3)try to click something else!</p>
+              <p onClick={this.asynchronous}><b>Asynchronous:</b> 1)Press F12 2)click here 3)try to click something else!</p>
               </div>
             </div>
           ),
           code: `
-          blocking() {
+          synchronous() {
             const task = msg => {
               // time consuming task
               let n = 10000; //change to 1000000
@@ -355,21 +356,36 @@ class Core extends React.Component {
             task("File downloaded!");
             console.log("Task done!");
           } `,
-        },
-      ],
-    };
+        }
+      ]
+    }
   }
 
-  blocking() {
+
+
+ synchronous = () => {
     const task = msg => {
       // time consuming task
-      let n = 10000; //change to 1000000
+      let n = 10000; //change it to 1000000
       for(n > 0; n--;) console.log(n + " ms");
       console.log(msg);
     };
     console.log("File downloading...");
     task("File downloaded!");
     console.log("Task done!");
+  }
+
+  
+  asynchronous = async () => {
+    const task = (msg) => {
+      // time consuming task
+      let n = 10000; //change it to 1000000
+      for(n > 0; n--;) console.log(n + " ms");
+      console.log(msg);
+    };
+    await console.log("File downloading...");
+    await task("File downloaded!");
+    await console.log("Task done!");
   } 
 
   render() {
