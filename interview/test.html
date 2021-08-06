@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        div{
+            height: 300px;
+            display: flex;
+            width: 900px;
+            border: 1px solid black;
+        }
+        section{
+            height: 200px;
+            flex-grow: 2;
+            width: 245px;
+            /* 245 + 126 */
+            border: 1px solid blue;
+        }
+        aside{
+            height: 100px;
+            flex-grow: 1;
+            width: 462px;
+            /* 462 + 63 */
+            border:1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <p>test</p>
+    <div>
+        <section>section</section>
+        <aside>aside</aside>
+    </div>
+    <script>
+        // first test ----------
+        var a, b;
+        function foo(){
+            var x = 3;
+            a = x * 2;
+            baz()
+        }
+        function bar(){
+            var y = 5;
+            b = y * 2;
+            baz();
+        }
+        function baz(){
+            console.log(a + b);
+        }
+        console.log(baz());
+        //The console.log executing in the `baz` function will have a result of: 1-16, 2-10, 3-nan, 4-undefined
+
+        // second test ------------
+        var res = [];
+        function foo(results){
+            res.foo = results;
+        }
+        function bar(results){
+            res.bar = results;
+        }
+        //In this code, `foo()` and `bar()` are two concurrent processes and it determines which order they will be fired in. FALSE concurrent process is non-determined!
+
+        // third test ------------
+        var arr = [];
+        function response(data){
+            if(data.url == 'http://example1.com'){
+                arr[0] = data;
+            } else if (data.url == 'http://example2.com'){
+                arr[1] = data;
+            }
+        }
+    </script>
+</body>
+</html>
