@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codewars-1</title>
+</head>
+
+<body>
+  <h1 onclick="testCode()">Click here!</h1>
+  <h2>Text with vowels</h2>
+  <div class="tree"></div>
+  <script>
+    let output1 = document.querySelector('h1');
+    let output2 = document.querySelector('h2');
+    let tree = document.querySelector('.tree');
+
+    testCode = () => {
+      let input = prompt('Type in something!');
+      // disemvowel(input);
+      // accum(input);
+      // nameTree(input);
+      // highAndLow(input);
+      // isogram(input);
+      // calc(input);
+      // duplicateEncode(input);
+      // checkConcatenatedSum(input);
+      validateUser(input);
+    }
+
+    //1-REMOVE VOWELS: Trolls are attacking your comment section!
+    // A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+    // Your task is to write a function that takes a string and return a new string with all vowels removed.
+    // For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+    // Note: for this kata "y" isn't considered a vowel.
+    disemvowel = input => {
+      output1.innerHTML = input.replace(/[aeiou]/gi, '');
+      output2.innerHTML = input;
+      // This website is for losers LOL!
+    }
+
+    // -------------------------------------------------
+
+    // 2-MUMBLING
+    // This time no story, no theory. The examples below show you how to write function accum:
+    // Examples:
+    // accum("abcd") -> "A-Bb-Ccc-Dddd"
+    // accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+    // accum("cwAt") -> "C-Ww-Aaa-Tttt"
+    // The parameter of accum is a string which includes only letters from a..z and A..Z.
+    accum = input => {
+      // const result = []
+      // const lowerStr = input.toLowerCase()
+      // // 1-lowerStr[i] = h-e-l-l-o = 5 letters
+
+      // for (let i = 0; i < lowerStr.length; i++) {
+      //   // 2-is 5 higher than 0? Yes! see 3
+      //   let upperStr = lowerStr[i].toUpperCase()
+      //   // 3-change 1st letter to upperCase and
+      //   for (let j = 0; j < i; j++) {
+      //     // 4-is 5 higher than 0? Yes!
+      //     upperStr += lowerStr[i]
+      //     // 5-add lowerStr to upperStr
+      //     console.log(upperStr);
+      //     // 6-add 1 to 0 and it becomes 1
+      //     // 7-is 1 higher than 5?
+      //   }
+      //   result.push(upperStr)
+      // }
+      // // return results.join("-")
+      // output2.innerHTML = result.join("-")
+
+      // SHORTEST VERSION ON CODEWARS
+      output2.innerHTML = input
+        .split('')
+        .map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i)))
+        .join('-');
+    }
+
+    // A FUN THING TO DO WITH NESTED LOOP
+    nameTree = input => {
+      for (let i = 0; i < input.length; i++) {
+        for (let j = i; j >= 0; j--) {
+          tree.append(input[i]);
+        }
+        let br = document.createElement('br');
+        tree.append(br);
+      }
+    }
+
+    // --------------------------------------------------
+
+    // 3 - HIGHEST AND LOWEST 
+    // In this little assignment you are given a string of space 
+    // separated numbers, and have to return the highest and lowest number.
+
+    // Example:
+
+    // highAndLow("1 2 3 4 5");  // return "5 1"
+    // highAndLow("1 2 -3 4 5"); // return "5 -3"
+    // highAndLow("1 9 3 4 -5"); // return "9 -5"
+    // Notes:
+
+    // All numbers are valid Int32, no need to validate them.
+    // There will always be at least one number in the input string.
+    // Output string must be two numbers separated by a single space, and highest number is first.
+    highAndLow = input => {
+      // 4 5 29 54 4 0 -214 542 -64 1 -3 6 -6
+      // console.log(input.split(' '));
+      let arr = input.split(' ').map(Number);
+      // console.log(arr);
+      const max = Math.max(...arr);
+      const min = Math.min(...arr);
+      // return Math.max(...arr) + ' ' + Math.min(...arr);
+      output2.innerHTML = `highest: ${max}  lowest: ${min}`;
+    }
+
+
+    // -----------------------------------------------------------
+
+    // 4 - ISOGRAM-is a word that has no repeating letters, consecutive or non - consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram.Ignore letter case.
+    // isIsogram("Dermatoglyphics") == true
+    // isIsogram("aba") == false
+    // isIsogram("moOse") == false // -- ignore letter case 
+    isogram = input => {
+      return !/(.).*\1/i.test(input);
+    }
+
+    // -----------------------------------------------------------
+
+    // 5-CHAR CODE CALCULATION - Given a string, turn each character into its ASCII character code and join them together to create a number - let's call this number total1:
+
+    // 'ABC' -- > 'A' = 65, 'B' = 66, 'C' = 67 -- > 656667
+    // Then replace any incidence of the number 7 with the number 1, and call this number 'total2':
+
+    // total1 = 656667
+    //   ^
+    //   total2 = 656661
+    //     ^
+    //     Then return the difference between the sum of the digits in total1 and total2:
+
+    // (6 + 5 + 6 + 6 + 6 + 7) 
+    //-(6 + 5 + 6 + 6 + 6 + 1)
+    // -------------------------
+    //   6
+    const calc = input => {
+      // let arr = [];
+      // for (let i = 0; i < x.length; i++) {
+      //   arr.push(x.charCodeAt(i));
+      // }
+      // let total1 = arr.join('');
+      // let total2 = total1.replace(/7/g, '1');
+      // return (total1) - (total2);
+      let x = (input.replace(/./g, input => input.charCodeAt()).match(/7/g) || []).length * 6; console.log(x);
+    }
+
+    // -----------------------------------------------------------
+
+    // 6kyu - Duplicate Encoder
+    // The goal of this exercise is to convert a string to a new string where each 
+    // character in the new string is '(' if that character appears only once in the 
+    // original string, or ')' if that character appears more than once in the original 
+    // string. Ignore capitalization when determining if a character is a duplicate.
+
+    // Examples:
+    // "din" => "((("
+    // "recede" => "()()()"
+    // "Success" => ")())())"
+    // "(( @" => "))(("
+    duplicateEncode = (input) => {
+      input = input.toLowerCase().split("");
+      let x = input.map(a => (input.indexOf(a) === input.lastIndexOf(a)) ? "(" : ")").join("");
+      console.log(x);
+    }
+
+    // -----------------------------------------------------------
+
+    // 7kyu - Concatenated Sum
+    // The number 198 has the property that 198 = 11 + 99 + 88, i.e., if each of its 
+    // digits is concatenated twice and then summed, the result will be the original 
+    // number. It turns out that 198 is the only number with this property. However, 
+    // the property can be generalized so that each digit is concatenated n times and 
+    // then summed.
+
+    // eg:-
+
+    // original number =2997 , n=3
+    // 2997 = 222+999+999+777 and here each digit is concatenated three times.
+
+    // original number=-2997 , n=3
+
+    // -2997 = -222-999-999-777 and here each digit is concatenated three times.
+    // Write a function named checkConcatenatedSum/CheckConcatenatedSum that tests if 
+    // a number has this generalized property.
+    function checkConcatenatedSum(sum, n) {
+      var abs = Math.abs(sum);
+      return abs === [...abs + ""].reduce((s, d) => +d.repeat(n) + s, 0);
+    }
+
+    // -----------------------------------------------------------
+
+
+    // 6kyu - N-th Fibonacci
+
+    // I love Fibonacci numbers in general, but I must admit I love some more than others.
+
+    // I would like for you to write me a function that when given a number (n) returns the 
+    // n-th number in the Fibonacci Sequence.
+
+    // For example:
+
+    //    nthFibo(4) == 2
+    // Because 2 is the 4th number in the Fibonacci Sequence.
+
+    // For reference, the first two numbers in the Fibonacci sequence are 0 and 1, and each 
+    // subsequent number is the sum of the previous two.
+
+    function nthFibo(n) {
+      let [prev, curr] = [0, 1];
+      for (let i = 1; i < n; i++) [prev, curr] = [curr, prev + curr];
+      return prev;
+    }
+
+    // 7kyu - Divide and Conquer
+    // Given a mixed array of number and string representations of integers, add up the string integers and subtract this from the total of the non-string integers.
+    // Return as a number.
+    function divCon(x) {
+      return x.reduce((s, v) => s + (v === +v ? v : -v), 0);
+    }
+
+
+    // 6kyu - Find the odd int
+    // Given an array, find the int that appears an odd number of times.
+    // There will always be only one integer that appears an odd number of times.
+    const findOdd = (xs) => xs.reduce((a, b) => a ^ b);
+
+
+    // 6 kyu - Find the Parity Outlier
+    // You are given an array (which will have a length of at least 3, 
+    // but could be very large) containing integers. The array is either entirely comprised 
+    // of odd integers or entirely comprised of even integers except for a single integer N. 
+    // Write a method that takes the array as an argument and returns N.
+
+    // For example:
+    // [2, 4, 0, 100, 4, 11, 2602, 36]
+    // Should return: 11
+    // [160, 3, 1719, 19, 11, 13, -21]
+    // Should return: 160
+
+    function findOutlier(int) {
+      var even = int.filter(a => a % 2 == 0);
+      var odd = int.filter(a => a % 2 !== 0);
+      return even.length == 1 ? even[0] : odd[0];
+    }
+
+
+    // 6kyu - zipWith
+    // Implement zipWith / zip_with
+    // zipWith takes a function and two arrays and zips the arrays together, applying 
+    // the function to every pair of values.
+    // The function value is one new array.
+
+    // If the arrays are of unequal length, the output will only be as long as the 
+    // shorter one.
+    // (Values of the longer array are simply not used.)
+
+    // Inputs should not be modified.
+    // Examples
+    // zipWith( Math.pow, [10,10,10,10], [0,1,2,3] )      =>  [1,10,100,1000]
+    // zipWith( Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1] )  =>  [4,7,7,4,7,7]
+
+    // zipWith( function(a,b) { return a+b; }, 
+    // 	[0,1,2,3], [0,1,2,3] )  =>  [0,2,4,6]  Both forms are valid.
+    // zipWith( (a,b) => a+b,                  
+    // 	[0,1,2,3], [0,1,2,3] )  =>  [0,2,4,6]  Both are functions.
+    // Input validation
+
+    // Assume all input is valid.
+
+    const zipWith = (fn, a0, a1) => a0
+      .slice(0, Math.min(a0.length, a1.length))
+      .map((_, i) => fn(a0[i], a1[i]));
+
+    // -----------------------------------------------------------
+
+    // Simple validation of a username with regex
+    // Write a simple regex to validate a username.Allowed characters are:
+    // lowercase letters,
+    //   numbers,
+    //   underscore
+    // Length should be between 4 and 16 characters(both included)
+    validateUsr = (username) => {
+      // if (username.length > 3 && username.length < 17) {
+      // res = /\w/.test(username); BAD CODE
+      res = /^[a-z0-9_]{4,16}$/.test(username);
+      console.log(res);
+      /**
+        - `^`        Start from the beginning of the string.
+        - `[]`       Allow any character specified, including...
+        - `a-z`      anything from a to z,
+        - `0-9`      anything from 0 to 9,
+        - `_`        and underscore.
+        - `{4,16}`   Accept 4 to 16 of allowed characters, both numbers included.
+        - `$`        End the string right after specified amount of allowed characters is given.
+      */
+      // return res
+      // }
+    }
+
+
+    // 7 kyu Counting Array Elements
+    //     Write a function that takes an array and counts the number of each unique element present.
+
+    //       count(['james', 'james', 'john']) 
+    // # => { 'james': 2, 'john': 1 }
+    //EASY VERSION------------------
+    const count = array => {
+      const counts = {};
+      for (var i = 0; i < array.length; i++) {
+        counts[array[i]] = 1 + (counts[array[i]] || 0);
+      };
+      return counts;
+    };
+    // ADVANCED VERSION-------------
+    function count(array) {
+      return array.reduce(function (stack, value) {
+        return stack[value] ? stack[value]++ : stack[value] = 1, stack;
+      }, {});
+    }
+
+    // 6kyu - Validate my Password 
+
+    // I will give you a string. You respond with "VALID" if the string meets the requirements or "INVALID" if it does not.
+    // Passwords must abide by the following requirements:
+    // More than 3 characters but less than 20.
+    // Must contain only alphanumeric characters.
+    // Must contain letters and numbers.
+    validPass = (password) => {
+      return /(?=.+[a-z])(?=.+\d)^[a-z\d]{3,20}$/i.test(password) ? 'VALID' : 'INVALID';
+    }
+
+    /*
+    Description:
+    Set objects are new JavaScript built-in objects defined since ECMAScript 2015
+    A Set lets you store unique values of any type. It comes with some useful methods like .add, .clear, .has . . . BUT some "Set operations" are missing, like . . .
+    Intersection
+    A new set can be constructed by determining which members two sets have "in common". The intersection of A and B, denoted by A ∩ B, is the set of all things that are members of both A and B. If A ∩ B = ∅, then A and B are said to be disjoint.
+    Examples:
+      {1, 2} ∩ {1, 2} = {1, 2}.
+      {1, 2} ∩ {2, 3} = {2}.
+    Task
+    Create function inter getting 2 sets as arguments and returning a new Set as result of intersection of these 2 sets.
+    Examples:
+    A = new Set([1,2]);
+    B = new Set([2,3]);
+    C = inter(A,B) // -> {2}
+    
+    " May the Code be with you ! "
+    */
+
+
+    /*
+    Description:
+    Were you ever interested in the phenomena of astrology, star signs, tarot, voodoo ? (ok not voodoo that's too spooky)...
+    Task:
+    Your job for today is to finish the starSign function by finding the astrological sign, given the birth details as a Date object.
+    Start and end dates for zodiac signs vary on different resources so we will use this table to get consistent results:
+    Aquarius ------ 21 January - 19 February
+    Pisces --------- 20 February - 20 March
+    Aries ---------- 21 March - 20 April
+    Taurus -------- 21 April - 21 May
+    Gemini -------- 22 May - 21 June
+    Cancer -------- 22 June - 22 July
+    Leo ------------- 23 July - 23 August
+    Virgo ----------- 24 August - 23 September
+    Libra ----------- 24 September - 23 October
+    Scorpio -------- 24 October - 22 November
+    Sagittarius ---- 23 November - 21 December
+    Capricorn ----- 22 December - 20 January
+    Test info: 100 random tests (dates range from January 1st 1940 until now)
+*/
+    function inter(s1, s2) {
+      return new Set([...s1].filter(e => s2.has(e)))
+    }
+
+    function starSign(date) {
+      var day = date.getDate();
+
+      switch (date.getMonth()) {
+        case 0: return day < 21 ? "Capricorn" : "Aquarius";
+        case 1: return day < 20 ? "Aquarius" : "Pisces";
+        case 2: return day < 21 ? "Pisces" : "Aries";
+        case 3: return day < 21 ? "Aries" : "Taurus";
+        case 4: return day < 22 ? "Taurus" : "Gemini";
+        case 5: return day < 22 ? "Gemini" : "Cancer";
+        case 6: return day < 23 ? "Cancer" : "Leo";
+        case 7: return day < 24 ? "Leo" : "Virgo";
+        case 8: return day < 24 ? "Virgo" : "Libra";
+        case 9: return day < 24 ? "Libra" : "Scorpio";
+        case 10: return day < 23 ? "Scorpio" : "Sagittarius";
+        case 11: return day < 22 ? "Sagittarius" : "Capricorn";
+      }
+    }
+
+    /*
+    Description:
+    You will be given a string (map) featuring a cat "C" and a mouse "m". The rest of the string will be made up of dots (".") The cat can move the given number of moves up, down, left or right, but not diagonally.
+    You need to find out if the cat can catch the mouse from it's current position and return "Caught!" or "Escaped!" respectively.
+    Finally, if one of two animals are not present, return "boring without two animals".
+    Examples
+    moves = 5
+    map =
+    ..C......
+    .........
+    ....m....
+    returns "Caught!" because the cat can catch the mouse in 4 moves
+    moves = 5
+    map =
+    .C.......
+    .........
+    ......m..
+    returns "Escaped!" because the cat cannot catch the mouse in  5 moves
+    */
+    function catMouse(map, moves) {
+      map = map.split('\n')
+      if (!map.some(v => v.includes('C')) || !map.some(v => v.includes('m'))) return 'boring without two animals'
+      let catX = map.map(v => v.indexOf('C')).filter(v => v > -1) * 1
+      let catY = map.map(v => v.includes('C')).indexOf(true) + 1
+      let mX = map.map(v => v.indexOf('m')).filter(v => v > -1) * 1
+      let mY = map.map(v => v.includes('m')).indexOf(true) + 1
+      return Math.abs(catX - mX) + Math.abs(catY - mY) <= moves ? 'Caught!' : 'Escaped!'
+    }
+
+    filterString = (value) => {
+      let num = value.replace(/\D/g, '');
+      return Number(num)
+    }
+
+    function basicOp(operation, value1, value2) {
+      if (operation == '+') { return value1 + value2 };
+      if (operation == '-') { return value1 - value2 };
+      if (operation == '*') { return value1 * value2 };
+      if (operation == '/') { return value1 / value2 };
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codewars-1</title>
+</head>
+
+<body>
+  <h1 onclick="testCode()">Click here!</h1>
+  <h2>Text with vowels</h2>
+  <div class="tree"></div>
+  <script>
+    let output1 = document.querySelector('h1');
+    let output2 = document.querySelector('h2');
+    let tree = document.querySelector('.tree');
+
+    testCode = () => {
+      let input = prompt('Type in something!');
+      disemvowel(input);
+      // basicOp();
+      // printArray();
+      delFirstLastChar(input);
+    }
+
+    //1-REMOVE VOWELS: Trolls are attacking your comment section!
+    // A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+    // Your task is to write a function that takes a string and return a new string with all vowels removed.
+    // For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+    // Note: for this kata "y" isn't considered a vowel.
+    disemvowel = input => {
+      output1.innerHTML = input.replace(/[aeiou]/gi, '');
+      output2.innerHTML = input;
+      // This website is for losers LOL!
+    }
+
+    // 8kyu Opposite number
+    // Very simple, given a number, find its opposite.
+    opposite = (number) => { return (-number) };
+    //-------------------------------------------------------------
+
+    // Your task is to create a function that does four basic mathematical operations.
+    // The function should take three arguments - operation(string / char), value1(number), value2(number).
+    // The function should return result of numbers after applying the chosen operation.
+    basicOp = (operation, value1, value2) => {
+      if (operation == '+') { return value1 + value2 };
+      if (operation == '-') { return value1 - value2 };
+      if (operation == '*') { return value1 * value2 };
+      if (operation == '/') { return value1 / value2 };
+    }
+    basicOp = (o, a, b) => { return eval(a + o + b) };
+    //-----------------------------------------------------------
+
+    // 8kyu Input: Array of elements ["h", "o", "l", "a"]
+    // Output: String with comma delimited elements of the array in th same order. "h,o,l,a"
+    printArray = () => {
+      let array = ["h", "o", "l", "a"];
+      console.log(array.join());
+    }
+    //-----------------------------------------------------------
+
+    // 8kyu After a hard quarter in the office you decide to get some rest on a vacation.So you will book a flight for you and your girlfriend and try to leave all the mess behind you.
+
+    // You will need a rental car in order for you to get around in your vacation.The manager of the car rental makes you some good offers.
+
+    // Every day you rent the car costs $40.If you rent the car for 7 or more days, you get $50 off your total.Alternatively, if you rent the car for 3 or more days, you get $20 off your total.
+
+    // Write a code that gives out the total amount for different days(d).
+    rentalCarCost = (d) => {
+      let rent = 40;
+      if (d >= 7) { return rent * d - 50 }
+      else if (d >= 3) { return rent * d - 20 }
+      else { return rent * d };
+      // if (d < 3) { rent + rent }
+    }
+    function rentalCarCost(d) {
+      return d * 40 - (d >= 7 ? 50 : (d >= 3 ? 20 : 0));
+    }
+    console.log(rentalCarCost(3));
+    //-----------------------------------------------------------
+
+    //     You are going to be given a word.Your job is to return the middle character of the word.If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+    //       #Examples:
+    //     Kata.getMiddle("test") should return "es"
+    //     Kata.getMiddle("testing") should return "t"
+    //     Kata.getMiddle("middle") should return "dd"
+    //     Kata.getMiddle("A") should return "A"
+    // #Input
+    //     A word(string) of length 0 < str < 1000(In javascript you may get slightly more than 1000 in some test cases due to an error in the test cases).You do not need to test for this.This is only here to tell you that you do not need to worry about your solution timing out.
+    //       #Output
+    //     The middle character(s) of the word represented as a string.
+    function getMiddle(s) {
+      var position, length;
+      if ((s.length % 2) == 0) {
+        position = s.length / 2 - 1;
+        length = 2;
+      } else {
+        position = (s.length - 1) / 2;
+        length = 1;
+      }
+      return s.substring(position, position + length);
+    }
+    //-----------------------------------------------------------
+    /*
+      Title:
+        Word Count
+      Description:
+        Can you realize a function that returns word count from a given string?
+        You have to ensure that spaces in string is a whitespace for real.
+        What kind of tests we got for your code:
+        Function have to count words, but not spaces, so be sure that it does right.
+        Empty string has no words.
+        String with spaces around should be trimmed.
+        Non-whitespace (ex. breakspace, unicode chars) should be assumed as delimiter
+        Be sure that words with chars like -, ', ` are counted right.
+      Examples:
+        countWords("Hello"); // returns 1 as int
+        countWords("Hello, World!") // returns 2
+        countWords("No results for search term `s`") // returns 6
+        countWords(" Hello") // returns 1
+        // ... and so on
+      Kata Link:
+        https://www.codewars.com/kata/word-count
+      Discuss Link:
+        https://www.codewars.com/kata/word-count/discuss
+      Solutions Link:
+        https://www.codewars.com/kata/word-count/solutions
+    */
+    // const countWords = string => string.split(/\s/g).filter(Boolean).length;
+    function countWords(str) { return (str.match(/[^\s]+/g) || []).length };//codewars best soution
+    console.log(countWords('"hi" how are you'));
+
+
+
+    delFirstLastChar = (input) => {
+      // let arr = input.toString().split(" ");
+      // if (arr.length > 2) {
+      //   arr.pop();
+      //   arr.shift();
+      //   // console.log(arr);
+      //   return arr;
+      // } else {
+      //   return null;
+      //   // console.log(null);
+      // }
+      return str
+        .split(',')
+        .slice(1, -1)
+        .join(' ') || null;
+    }
+    // console.log(delFirstLastChar('1,2,3'));
+
+
+
+
+  </script>
+</body>
+
+</html>
