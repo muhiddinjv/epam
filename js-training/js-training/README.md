@@ -1,4 +1,4 @@
-# Codewars JS For Complete Beginners
+# Codewars JS For Newbies
 
 ##### #1: [create your first JS function helloWorld](http://www.codewars.com/kata/571ec274b1c8d4a61c0000c8)
 ### Basic Data Types
