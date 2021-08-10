@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Copy</title>
+  </head>
+  <body>
+    <h1>Deep Copy Here Baby!</h1>
+    <script>
+      // deep copy = new value is disconnected from the original variable. Original object remains intact.
+      // shallow copy = some values still connected to the original variable. Original object is changed too.
+      const obj = {
+        a: 4,
+        b: {
+          c: 5,
+        },
+      };
+
+      // three options to copy
+      let obj1 = JSON.parse(JSON.stringify(obj)); //deep copy
+      //   let obj1 = Object.assign({}, obj) //shallow copy
+      // let obj1 = {...obj} //shallow copy
+
+      obj1.a = 1;
+      obj1.b.c = 2;
+
+      console.log(obj);
+      console.log(obj1);
+      console.log(obj1 === obj);
+      console.log(obj1.b === obj.b);
+
+      //obj1 is a newly created object
+      //   obj1 === obj; // false;
+      //   obj1.b === obj.b; // false;
+    </script>
+  </body>
+</html>
