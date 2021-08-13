@@ -12,6 +12,27 @@
     <script>
       // deep copy = new value is disconnected from the original variable. Original object values remains intact.
       // shallow copy = some values still connected to the original variable. Original object values can be changed too.
+
+      // more serious object w/ arrays
+      // const notes=[
+      //   {
+      //     contents: "Hello World 1",
+      //     function: console.log,
+      //     children: [
+      //       {
+      //         contents: "Hello World A",
+      //         function: console.log,
+      //         children: []
+      //       },
+      //     ]
+      //   },
+      //   {
+      //     contents: "Hello World 2",
+      //     function: console.log,
+      //     children: []
+      //   }
+      // ]
+
       const obj = { a: 4, b: { c: 5 } };
 
       // three options to copy
