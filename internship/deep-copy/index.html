@@ -19,61 +19,25 @@
       //   let obj1 = Object.assign({}, obj) //shallow copy
       // let obj1 = {...obj} //shallow copy
 
-      function clone(item) {
-        if (!item) {
-          return item;
-        } // null, undefined values check
-
-        var types = [Number, String, Boolean],
-          result;
-
-        // normalizing primitives if someone did new String('aaa'), or new Number('444');
-        types.forEach(function (type) {
-          if (item instanceof type) {
-            result = type(item);
-          }
-        });
-
-        if (typeof result == "undefined") {
-          if (Object.prototype.toString.call(item) === "[object Array]") {
-            result = [];
-            item.forEach(function (child, index, array) {
-              result[index] = clone(child);
-            });
-          } else if (typeof item == "object") {
-            // testing that this is DOM
-            if (item.nodeType && typeof item.cloneNode == "function") {
-              result = item.cloneNode(true);
-            } else if (!item.prototype) {
-              // check that this is a literal
-              if (item instanceof Date) {
-                result = new Date(item);
-              } else {
-                // it is an object literal
-                result = {};
-                for (var i in item) {
-                  result[i] = clone(item[i]);
-                }
-              }
+      function deepCopy(src) {
+        let target = Array.isArray(src) ? [] : {};
+        for (let key in src) {
+          let v = src[key];
+          if (v) {
+            if (typeof v === "object") {
+              target[key] = deepCopy(v);
             } else {
-              // depending what you would like here,
-              // just keep the reference, or create new object
-              if (false && item.constructor) {
-                // would not advice to do that, reason? Read below
-                result = new item.constructor();
-              } else {
-                result = item;
-              }
+              target[key] = v;
             }
           } else {
-            result = item;
+            target[key] = v;
           }
         }
 
-        return result;
+        return target;
       }
 
-      const obj1 = clone(obj);
+      const obj1 = deepCopy(obj);
 
       obj1.a = 1;
       obj1.b.c = 2;
