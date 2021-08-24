@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>Welcome</title>
+	<style>
+		body{
+			text-align:center;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+  <h1>Weclome!</h1>
+  <h2></h2>
+  <h3></h3>
+  <button onclick="block()">Block</button>
+	<button onclick="show()">Show</button>
+  <script>
+    const showText = document.querySelector("h2")
+    const showNum = document.querySelector("h3")
+
+		 function show(){
+		   showText.innerHTML = "Yeah! Unblocked!";
+		 }
+		
+		 function block(){
+		   let result = 0;
+       for (let i = 0; i < 100000000; i++){
+         result += i
+       }
+       showNum.innerHTML = result;
+		 }
+  </script>
+</body>
+</html>

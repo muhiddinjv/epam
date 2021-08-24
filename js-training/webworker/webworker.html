@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>WebWorker</title>
+    <style>
+      body {
+        text-align: center;
+        background: pink;
+      }
+      p {
+        width: 200px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Web Worker!</h1>
+    <h3></h3>
+    <p>
+      Click "Block" to run it in the background while you're clicking "Count"!
+    </p>
+    <h2></h2>
+    <button onclick="count()">Count</button>
+    <button onclick="block()">Block</button>
+    <script>
+      let i = 0;
+      const count = () => {
+        document.querySelector("h2").innerHTML = i++;
+      };
+
+      const block = () => {
+        let myWorker = new Worker("worker.js");
+        myWorker.postMessage("do work");
+        myWorker.onmessage = (e) => {
+          document.querySelector("h3").innerHTML = e.data;
+        };
+      };
+    </script>
+  </body>
+</html>
