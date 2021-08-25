@@ -19,13 +19,20 @@
       Click "Block" to run it in the background while you're clicking "Count"!
     </p>
     <h2></h2>
-    <button onclick="count()">Count</button>
     <button onclick="block()">Block</button>
+    <button onclick="count()">Count</button>
     <script>
       let i = 0;
       const count = () => {
         document.querySelector("h2").innerHTML = i++;
+        interval();
       };
+
+      const interval = () => {
+        setInterval(() => {
+        document.querySelector("h2").innerHTML = i++;
+        }, 1000);
+      }
 
       const block = () => {
         let myWorker = new Worker("worker.js");
