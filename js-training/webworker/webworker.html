@@ -28,10 +28,6 @@
       let x = 0;
       const count = () => {
         countDiv.innerHTML = x++;
-        interval();
-      };
-
-      const interval = () => {
         setInterval(() => {
           countDiv.innerHTML = x++;
         }, 100);
@@ -46,7 +42,7 @@
 
       // RUNS PARALLEL
       const block = () => {
-        blockDiv.innerHTML = "blocking...";
+        blockDiv.innerHTML = "Blocking...";
         let myWorker = new Worker("worker.js");
         myWorker.postMessage("do work");
         myWorker.onmessage = (e) => {
