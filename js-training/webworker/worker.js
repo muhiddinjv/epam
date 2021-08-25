@@ -3,5 +3,5 @@ onmessage = (e) => {
    for (let i = 0; i < 3000000000; i++){
       result += i
    }
-   postMessage(result);
+   postMessage("Unblocked!");
 }

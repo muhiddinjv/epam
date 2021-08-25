@@ -22,31 +22,35 @@
     <button onclick="block()">Block</button>
     <button onclick="count()">Count</button>
     <script>
+      let countDiv = document.querySelector("h2");
+      let blockDiv = document.querySelector("h3");
+
       let x = 0;
       const count = () => {
-        document.querySelector("h2").innerHTML = x++;
+        countDiv.innerHTML = x++;
         interval();
       };
 
       const interval = () => {
         setInterval(() => {
-          document.querySelector("h2").innerHTML = x++;
+          countDiv.innerHTML = x++;
         }, 100);
       };
 
       // BLOCKS EVERYTHING
       // const block = () => {
       //   for (let i = 0; i < 3000000000; i++) {
-      //     document.querySelector("h3").innerHTML = i;
+      //     blockDiv.innerHTML = i;
       //   }
       // };
 
       // RUNS PARALLEL
       const block = () => {
+        blockDiv.innerHTML = "blocking...";
         let myWorker = new Worker("worker.js");
         myWorker.postMessage("do work");
         myWorker.onmessage = (e) => {
-          document.querySelector("h3").innerHTML = e.data;
+          blockDiv.innerHTML = e.data;
         };
       };
     </script>
