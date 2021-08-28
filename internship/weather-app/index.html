@@ -8,10 +8,20 @@
   </head>
   <body>
     <div class="wrapper">
-        <div class="http">
-            <h3>XmlHttpRequest</h3>
-            <button>get weather</button>
+        <div class="http center">
+            <h3>XmlHttp</h3>
+            <div id="demo"></div>
+            <button onclick="weather('tashkent')">get weather</button>
+            <div class="city1"></div>
+            <div class="city2">
+                <span class="city">city</span>
+                <span class="temp">temperature</span>
+            </div>
         </div>
+
+
+
+        <!-- do later ----------------------------->
         <div class="promise">
             <h3>Promise</h3>
         </div>
@@ -19,5 +29,6 @@
             <h3>Async</h3>
         </div>
     </div>
+    <script src="js/xmlhttp.js"></script>
   </body>
 </html>
