@@ -50,7 +50,7 @@ function weather() {
       ) {
         let data = JSON.parse(request.responseText);
         console.log(i + " " + data.name + " " + data.main.temp);
-        arr.push("city: "+data.name + " " + data.main.temp);
+        arr.push("city: "+ data.name + " " + data.main.temp);
         document.querySelector(".city1").innerHTML = `
         <div>${data.name} ${data.main.temp}</div>
       `;
