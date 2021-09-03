@@ -34,3 +34,7 @@ function tashkent() {
     .catch((error) => {console.log(error)});
     console.log(result);
 }
+
+function racers(){
+  
+}
