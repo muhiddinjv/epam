@@ -43,7 +43,7 @@ const retry = () => new Promise((resolve,reject) => {
 })
 
 function tashkent() {
-  fetch(`http://api.openwathermap.org/data/2.5/weather?q=${cities[3]}&appid=${api}&units=metric`)
+  fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[3]}&appid=${api}&units=metric`)
   .then(res => res.json())
     .then(data => {
       let tempStr = Math.round(data.main.temp).toString();
