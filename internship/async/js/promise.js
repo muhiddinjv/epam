@@ -1,8 +1,8 @@
-let cities = ["New York","Antarctica","Sidney","Tashkent"];
-let racers = ["Minsk","Moscow","Kyiv"]
+let cities = ["New York","Antarctica","Sidney","Tashkent",["Minsk","Moscow","Kyiv"]];
+// let racers = 
 const api = "a6d8992fdb1cbddae48cdee434095312";
-// const api = "d0889ce843a11270e6749177a5118aec"; my 2nd api
-const output = document.querySelector('.output');
+//d0889ce843a11270e6749177a5118aec -- my 2nd api
+const constant = document.querySelector('.constant');
 const racing = document.querySelector('.racing');
 const tash = document.querySelector('.tash');
 
@@ -10,8 +10,7 @@ let result = [[], [], []];
 let retryEveryMs = 3000;
 let retries = 6;
 
-const retry = () => new Promise((resolve,reject) => {
-
+const constants = () => new Promise((resolve,reject) => {
   Promise.all([
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[0]}&appid=${api}&units=metric`),
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[1]}&appid=${api}&units=metric`),
@@ -27,7 +26,7 @@ const retry = () => new Promise((resolve,reject) => {
         let tempStr = Math.round(data[i].main.temp).toString();
         let temperature = tempStr > 0 ? "+" + tempStr : tempStr;
         newDiv.innerHTML = `${data[i].name}: ${temperature}`
-        output.appendChild(newDiv)
+        constant.appendChild(newDiv)
         result[0].push({ city: data[i].name, weather: temperature });
       }
     }).then(tashkent()).then(race())
@@ -35,12 +34,12 @@ const retry = () => new Promise((resolve,reject) => {
       console.log(error);
       setTimeout(() => {
         retries--;
-          racing.innerText = "Retrying promise..." + retries;
-          // racing.innerText = "Retrying failed promise..." + retries;
+          tash.innerText = "Retrying promise..." + retries;
+          // tash.innerText = "Retrying failed promise..." + retries;
           if(retries==0) {
-              return reject(racing.innerText = "Max retries exceeded!");
+              return reject(tash.innerText = "Max retries exceeded!");
           }
-          retry().then(resolve);
+          constants().then(resolve);
       }, retryEveryMs);
       console.log(retries)
   });
@@ -61,9 +60,9 @@ function tashkent() {
 
 function race(){
     Promise.race([
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${racers[0]}&appid=${api}&units=metric`),
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${racers[1]}&appid=${api}&units=metric`),
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${racers[2]}&appid=${api}&units=metric`),
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[4][0]}&appid=${api}&units=metric`),
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[4][1]}&appid=${api}&units=metric`),
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[4][2]}&appid=${api}&units=metric`),
     ])
     .then(res => res.json())
     .then(data => {
