@@ -1,6 +1,8 @@
 let cities = ["New York","Antarctica","Sidney","Tashkent",["Minsk","Moscow","Kyiv"]];
 const api = "a6d8992fdb1cbddae48cdee434095312";
 //d0889ce843a11270e6749177a5118aec -- my 2nd api
+const fetchCity = city => fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api}&units=metric`)
+
 const constant = document.querySelector('.constant');
 const racing = document.querySelector('.racing');
 const tash = document.querySelector('.tash');
@@ -11,12 +13,11 @@ let retries = 6;
 
 const constants = () => new Promise((resolve,reject) => {
   Promise.all([
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[0]}&appid=${api}&units=metric`),
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[1]}&appid=${api}&units=metric`),
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[2]}&appid=${api}&units=metric`),
+    fetchCity(cities[0]),
+    fetchCity(cities[1]),
+    fetchCity(cities[2])
   ])
     .then(responses => {
-      // Get a JSON object from each of the responses
       return Promise.all(responses.map(res => res.json()));
     })
     .then(data => {
@@ -46,8 +47,7 @@ const constants = () => new Promise((resolve,reject) => {
 })
 
 function tashkent() {
-  fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[3]}&appid=${api}&units=metric`)
-  .then(res => res.json())
+  fetchCity(cities[3]).then(res => res.json())
     .then(data => {
       let tempStr = Math.round(data.main.temp).toString();
       let temperature = tempStr > 0 ? "+" + tempStr : tempStr;
@@ -59,11 +59,10 @@ function tashkent() {
 
 function race(){
     Promise.race([
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[4][0]}&appid=${api}&units=metric`),
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[4][1]}&appid=${api}&units=metric`),
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[4][2]}&appid=${api}&units=metric`),
-    ])
-    .then(res => res.json())
+      fetchCity(cities[4][0]),
+      fetchCity(cities[4][1]),
+      fetchCity(cities[4][2])
+    ]).then(res => res.json())
     .then(data => {
       let tempStr = Math.round(data.main.temp).toString();
       let temperature = tempStr > 0 ? "+" + tempStr : tempStr;
