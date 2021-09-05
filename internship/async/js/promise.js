@@ -1,5 +1,4 @@
 let cities = ["New York","Antarctica","Sidney","Tashkent",["Minsk","Moscow","Kyiv"]];
-// let racers = 
 const api = "a6d8992fdb1cbddae48cdee434095312";
 //d0889ce843a11270e6749177a5118aec -- my 2nd api
 const constant = document.querySelector('.constant');
@@ -16,11 +15,11 @@ const constants = () => new Promise((resolve,reject) => {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[1]}&appid=${api}&units=metric`),
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cities[2]}&appid=${api}&units=metric`),
   ])
-    .then((responses) => {
+    .then(responses => {
       // Get a JSON object from each of the responses
       return Promise.all(responses.map(res => res.json()));
     })
-    .then((data) => {
+    .then(data => {
       for (let i = 0; i < data.length; i++) {
         let newDiv = document.createElement('div');
         let tempStr = Math.round(data[i].main.temp).toString();
@@ -30,7 +29,7 @@ const constants = () => new Promise((resolve,reject) => {
         result[0].push({ city: data[i].name, weather: temperature });
       }
     }).then(tashkent()).then(race())
-    .catch((error) => {
+    .catch(error => {
       console.log(error);
       setTimeout(() => {
         retries--;

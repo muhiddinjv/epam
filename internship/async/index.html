@@ -8,8 +8,23 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="http">
+      <div class="http center">
         <h3>XmlHttp</h3>
+        <button onclick="constants2()">get weather</button>
+        <div class="results2">
+          <fieldset>
+            <legend>Constants</legend>
+            <div class="constant2"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Tashkent</legend>
+            <div class="tash2"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Fastest</legend>
+            <div class="racing2"></div>
+          </fieldset>
+        </div>
       </div>
 
       <div class="promise center">
@@ -25,7 +40,7 @@
             <div class="tash"></div>
           </fieldset>
           <fieldset>
-            <legend>Racers</legend>
+            <legend>Fastest</legend>
             <div class="racing"></div>
           </fieldset>
         </div>
@@ -37,6 +52,7 @@
         
       </div>
     </div>
+    <script src="js/xmlhttp.js"></script>
     <script src="js/promise.js"></script>
   </body>
 </html>
