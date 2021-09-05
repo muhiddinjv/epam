@@ -8,9 +8,7 @@ const tash = document.querySelector('.tash');
 
 let result = [[], [], []];
 let retryEveryMs = 3000;
-let maxRetries = 5;
-let retries = 0;
-
+let retries = 6;
 
 const retry = () => new Promise((resolve,reject) => {
 
@@ -28,7 +26,7 @@ const retry = () => new Promise((resolve,reject) => {
         let newDiv = document.createElement('div');
         let tempStr = Math.round(data[i].main.temp).toString();
         let temperature = tempStr > 0 ? "+" + tempStr : tempStr;
-        newDiv.innerHTML = `${data[i].name} ${temperature}`
+        newDiv.innerHTML = `${data[i].name}: ${temperature}`
         output.appendChild(newDiv)
         result[0].push({ city: data[i].name, weather: temperature });
       }
@@ -36,10 +34,11 @@ const retry = () => new Promise((resolve,reject) => {
     .catch((error) => {
       console.log(error);
       setTimeout(() => {
-        retries++;
-          racing.innerText = "Retrying failed promise..." + retries;
-          if(retries==maxRetries) {
-              return reject(racing.innerText = "Maximum retries exceeded!");
+        retries--;
+          racing.innerText = "Retrying promise..." + retries;
+          // racing.innerText = "Retrying failed promise..." + retries;
+          if(retries==0) {
+              return reject(racing.innerText = "Max retries exceeded!");
           }
           retry().then(resolve);
       }, retryEveryMs);
