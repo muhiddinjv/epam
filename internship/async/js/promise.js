@@ -31,19 +31,19 @@ const constants = () => new Promise((resolve,reject) => {
       }
     }).then(tashkent()).then(race())
     .catch(error => {
-      console.log(error);
+      console.log(error)
       setTimeout(() => {
         retries--;
           tash.innerText = "Retrying promise..." + retries;
-          // tash.innerText = "Retrying failed promise..." + retries;
+          // Retrying failed promise...
           if(retries==0) {
-              return reject(tash.innerText = "Max retries exceeded!");
+              return tash.innerText = "Max retries exceeded!";
           }
           constants().then(resolve);
       }, retryEveryMs);
-      console.log(retries)
-  });
-  console.log(result);
+    });
+    console.log(retries)
+    // console.log(result);
 })
 
 function tashkent() {
