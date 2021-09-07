@@ -25,7 +25,7 @@ async function fetchData(city) {
 const weather = async () => {
   let result2 = [];
   try {
-    console.log("fetching....");
+    console.log("fetching async....");
     const constants2 = await Promise.all([
       fetchData(cities2[0]),
       fetchData(cities2[1]),
@@ -65,7 +65,7 @@ const weather = async () => {
       },
     ]);
     console.log(result2);
-    console.log("fetching complete!");
+    console.log("fetching async complete!");
     return build(result2);
   } catch (error) {
     console.log(error);
@@ -83,12 +83,11 @@ const weather = async () => {
 };
 
 const build = (result2) => {
+  console.log("building async...");
+
   const city1 = document.querySelector('.city1');
   const city2 = document.querySelector('.city2');
   const city3 = document.querySelector('.city3');
-  
-  console.log("building...");
-  console.log(result2);
 
   let c = result2[0];
   let cc = result2[1];
@@ -101,5 +100,5 @@ const build = (result2) => {
   tash2.innerHTML = `${cc[0].city}: ${cc[0].weather}`;
   racing2.innerHTML = `${ccc[0].city}: ${ccc[0].weather}`;
 
-  console.log("building complete!");
+  console.log("building async complete!");
 };

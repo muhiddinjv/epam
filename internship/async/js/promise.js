@@ -1,73 +1,104 @@
-let cities = ["New York","Antarctica","Sidney","Tashkent",["Minsk","Moscow","Kyiv"]];
+let cities = [
+  "New York",
+  "Antarctica",
+  "Sidney",
+  "Tashkent",
+  ["Minsk", "Moscow", "Kyiv"],
+];
 const api = "a6d8992fdb1cbddae48cdee434095312";
 //d0889ce843a11270e6749177a5118aec -- my 2nd api
-const fetchCity = city => fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api}&units=metric`)
+const fetchCity = (city) => {
+  return fetch(
+    `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api}&units=metric`
+  ).then((response) => response.json());
+};
 
-const constant = document.querySelector('.constant');
-const racing = document.querySelector('.racing');
-const tash = document.querySelector('.tash');
-
-let result = [[], [], []];
+const tash = document.querySelector(".tash");
 let retryEveryMs = 3000;
 let retries = 6;
 
-const constants = () => new Promise((resolve,reject) => {
-  Promise.all([
-    fetchCity(cities[0]),
-    fetchCity(cities[1]),
-    fetchCity(cities[2])
-  ])
-    .then(responses => {
-      return Promise.all(responses.map(res => res.json()));
-    })
-    .then(data => {
-      for (let i = 0; i < data.length; i++) {
-        let newDiv = document.createElement('div');
-        let tempStr = Math.round(data[i].main.temp).toString();
-        let temperature = tempStr > 0 ? "+" + tempStr : tempStr;
-        newDiv.innerHTML = `${data[i].name}: ${temperature}`
-        constant.appendChild(newDiv)
-        result[0].push({ city: data[i].name, weather: temperature });
-      }
-    }).then(tashkent()).then(race())
-    .catch(error => {
-      console.log(error)
-      setTimeout(() => {
-        retries--;
+const constants = () =>
+  new Promise((resolve, reject) => {
+    let result = [];
+    console.log("fetching promise....");
+    Promise.all([
+      fetchCity(cities[0]),
+      fetchCity(cities[1]),
+      fetchCity(cities[2]),
+    ])
+      .then((data) => {
+        result.push(
+          data.map((d) => ({
+            city: d.name,
+            weather: `${d.main.temp > 0 ? "+" : ""}${Math.round(d.main.temp)}`,
+          }))
+        );
+      })
+      .then(() => fetchCity(cities[3]))
+      .then((tashkent) => {
+        result.push([
+          {
+            city: tashkent.name,
+            weather: `${tashkent.main.temp > 0 ? "+" : ""}${Math.round(
+              tashkent.main.temp
+            )}`,
+          },
+        ]);
+      })
+      .then(() => {
+        return Promise.race([
+          fetchCity(cities[4][0]),
+          fetchCity(cities[4][1]),
+          fetchCity(cities[4][2]),
+        ]);
+      })
+      .then((racers) => {
+        result.push([
+          {
+            city: racers.name,
+            weather: `${racers.main.temp > 0 ? "+" : ""}${Math.round(
+              racers.main.temp
+            )}`,
+          },
+        ]);
+        console.log(result);
+        console.log("fetching promise complete!");
+      })
+      .then(() => build1(result))
+      .catch((error) => {
+        console.log(error);
+        setTimeout(() => {
+          retries--;
           tash.innerText = "Retrying promise..." + retries;
           // Retrying failed promise...
-          if(retries==0) {
-              return tash.innerText = "Max retries exceeded!";
+          if (retries == 0) {
+            return (tash.innerText = "Max retries exceeded!");
           }
           constants().then(resolve);
-      }, retryEveryMs);
-    });
-    console.log(retries)
-    // console.log(result);
-})
+        }, retryEveryMs);
+      });
+    // console.log(retries);
+  });
 
-function tashkent() {
-  fetchCity(cities[3]).then(res => res.json())
-    .then(data => {
-      let tempStr = Math.round(data.main.temp).toString();
-      let temperature = tempStr > 0 ? "+" + tempStr : tempStr;
-      tash.innerHTML = `<div>${data.name}: ${temperature}</div>`;
-      result[1].push({ city: data.name, weather: temperature });
-    })
-    .catch(error => console.log(error));
-}
+const build1 = (result) => {
+  console.log("building promise...");
 
-function race(){
-    Promise.race([
-      fetchCity(cities[4][0]),
-      fetchCity(cities[4][1]),
-      fetchCity(cities[4][2])
-    ]).then(res => res.json())
-    .then(data => {
-      let tempStr = Math.round(data.main.temp).toString();
-      let temperature = tempStr > 0 ? "+" + tempStr : tempStr;
-      racing.innerHTML = `<div>${data.name}: ${temperature}</div>`;
-      result[2].push({ city: data.name, weather: temperature });
-    })
-    .catch(error => console.log(error));
-}
+  const city11 = document.querySelector(".city11");
+  const city22 = document.querySelector(".city22");
+  const city33 = document.querySelector(".city33");
+
+  const racing = document.querySelector(".racing");
+
+  let c1 = result[0];
+  let c2 = result[1];
+  let c3 = result[2];
+
+  city11.innerHTML = `${c1[0].city}: ${c1[0].weather}`;
+  city22.innerHTML = `${c1[1].city}: ${c1[1].weather}`;
+  city33.innerHTML = `${c1[2].city}: ${c1[2].weather}`;
+
+  tash.innerHTML = `${c2[0].city}: ${c2[0].weather}`;
+  racing.innerHTML = `${c3[0].city}: ${c3[0].weather}`;
+
+  console.log("building promise complete!");
+};
