@@ -61,7 +61,7 @@ const constants = () =>
             )}`,
           },
         ]);
-        console.log(result);
+        console.log(result[0]);
         console.log("fetching promise complete!");
       })
       .then(() => build1(result))
